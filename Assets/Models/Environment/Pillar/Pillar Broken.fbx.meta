@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 490515ae1bb3241509ffed5238f7da56
+guid: 9ae05fca71a24458cae172362dad1f26
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Floor
-    second: {fileID: 2100000, guid: 4b060cc9f1e8d404caf72882cb8a82dd, type: 2}
+      name: Pillar
+    second: {fileID: 2100000, guid: f09b33ffd537a4a70bc7f3b17ad2abf1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: slices
+    second: {fileID: 2100000, guid: 33a22bf1b8eb2480abbe8fa0415ae450, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -54,7 +59,7 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    keepQuads: 1
+    keepQuads: 0
     weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
