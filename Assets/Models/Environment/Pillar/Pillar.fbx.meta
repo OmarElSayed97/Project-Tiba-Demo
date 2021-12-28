@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Pillar
-    second: {fileID: 2100000, guid: 8b09acd45e55b41c78b533b012f4e660, type: 2}
+    second: {fileID: 2100000, guid: f09b33ffd537a4a70bc7f3b17ad2abf1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

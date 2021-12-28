@@ -107,3 +107,5 @@
 Assets/Plugins/** filter=lfs diff=lfs merge=lfs -text
 Assets/Firebase/** filter=lfs diff=lfs merge=lfs -text
 *.so filter=lfs diff=lfs merge=lfs -text
+C:/Omar/Express[[:space:]]Unity[[:space:]]Projects/Project-Tiba-Demo/Assets/Textures filter=lfs diff=lfs merge=lfs -text
+C:/Omar/Express[[:space:]]Unity[[:space:]]Projects/Project-Tiba-Demo/Assets/Audios filter=lfs diff=lfs merge=lfs -text
