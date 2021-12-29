@@ -124,7 +124,7 @@ Material:
     - _LightingCutoff: 0.03
     - _Metallic: 0
     - _Mode: 0
-    - _Normal_Strength: -0.39
+    - _Normal_Strength: 3.48
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
