@@ -103,7 +103,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _AmbientStrength: 1.68
+    - _AmbientStrength: 1.45
     - _Blend: 0
     - _BlendOp: 0
     - _BumpScale: 1
@@ -140,7 +140,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Ambient_Color: {r: 0.68209803, g: 0.7113779, b: 0.8431372, a: 1}
+    - _Ambient_Color: {r: 0.5235849, g: 0.6049241, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffuseColor: {r: 1, g: 1, b: 1, a: 1}
