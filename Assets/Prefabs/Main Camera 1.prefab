@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 203238061549130115}
   - component: {fileID: 203238061549130114}
   - component: {fileID: 203238061549130125}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203238061549130112}
   m_LocalRotation: {x: -0.013089583, y: -0, z: -0, w: 0.9999144}
-  m_LocalPosition: {x: 0, y: -0.2880907, z: 108.28946}
+  m_LocalPosition: {x: 0, y: -0.11, z: 115}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,7 +129,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
-  inputController: {fileID: 0}
   cursorSpeed: 0.05
   frustumParent: {fileID: 203238062703252530}
 --- !u!1 &203238061599347594

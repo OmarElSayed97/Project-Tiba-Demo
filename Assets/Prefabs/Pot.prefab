@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 375094519932058689}
   - component: {fileID: 2508625060062693513}
   - component: {fileID: 2508625060062693512}
-  - component: {fileID: 2508625060062693518}
-  m_Layer: 12
-  m_Name: Pot (12)
+  - component: {fileID: 6467420718333830502}
+  m_Layer: 9
+  m_Name: Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2176476716133866900}
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.36, y: 4.87, z: 9.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionObject: {fileID: 5117861379871383661}
---- !u!65 &2508625060062693518
-BoxCollider:
+--- !u!64 &6467420718333830502
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,9 +127,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.94734657, y: 0.58638996, z: 0.9473461}
-  m_Center: {x: -0.0000026375055, y: 0.29319498, z: 0.000003233552}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8517725900640002782, guid: 55d3480a9c7448340b3713f5d7e441f8, type: 3}
 --- !u!1 &5117861379746484071
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,8 +255,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5117861379871383661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: -0.05, z: -0}
-  m_LocalScale: {x: 0.5, y: 1.1, z: 1.1}
+  m_LocalPosition: {x: -0.001, y: -0.06, z: 0}
+  m_LocalScale: {x: 1.1051931, y: 1.15511, z: 0.051557}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1549157621685094190}

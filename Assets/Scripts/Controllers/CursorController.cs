@@ -5,7 +5,7 @@ namespace Controllers
 {
 	public class CursorController : Singleton<CursorController>
 	{
-		[SerializeField] private InputController inputController;
+		private InputController _inputController;
 		[SerializeField] private float cursorSpeed = 0.05f;
 		[SerializeField] private Transform frustumParent;
 
@@ -19,6 +19,11 @@ namespace Controllers
 		private Vector2 _upFrustumPlane;
 
 		public Vector3 CursorWorldPosition => transform.position;
+		protected override void OnAwakeEvent()
+		{
+			base.OnAwakeEvent();
+			_inputController = InputController.Instance;
+		}
 
 		public override void Start()
 		{
@@ -65,8 +70,8 @@ namespace Controllers
 			// }
 
 			_newPosition = transform.localPosition;
-			_newPosition.x = Mathf.Clamp(_newPosition.x + (inputController.Look.x * cursorSpeed), _leftFrustumPlane.x, _rightFrustumPlane.x);
-			_newPosition.y = Mathf.Clamp(_newPosition.y + (inputController.Look.y * cursorSpeed), _downFrustumPlane.y, _upFrustumPlane.y);
+			_newPosition.x = Mathf.Clamp(_newPosition.x + (_inputController.Look.x * cursorSpeed), _leftFrustumPlane.x, _rightFrustumPlane.x);
+			_newPosition.y = Mathf.Clamp(_newPosition.y + (_inputController.Look.y * cursorSpeed), _downFrustumPlane.y, _upFrustumPlane.y);
 
 			transform.localPosition = _newPosition;
 		

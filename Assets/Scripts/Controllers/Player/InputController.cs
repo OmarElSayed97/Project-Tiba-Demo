@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace Controllers.Player
 {
     [RequireComponent(typeof(PlayerInput))]
-    public class InputController : MonoBehaviour
+    public class InputController : Singleton<InputController>
     {
         private PlayerInput _playerInput;
 
@@ -22,8 +22,9 @@ namespace Controllers.Player
         public Vector2 Move { get; private set; }
         public Vector2 Look { get; private set; }
 
-        private void Awake()
+        protected override void OnAwakeEvent()
         {
+            base.OnAwakeEvent();
             _playerInput = GetComponent<PlayerInput>();
             _moveAction = _playerInput.actions["Move"];
             _runAction = _playerInput.actions["Run"];
@@ -41,8 +42,10 @@ namespace Controllers.Player
             _abilityAction.started += AbilityActionOnStarted;
             _abilityAction.canceled += AbilityActionOnCanceled;
         }
-        private void OnDisable()
+
+        public override void OnDisable()
         {
+            base.OnDisable();
             _runAction.started -= RunActionOnStarted;
             _runAction.canceled -= RunActionOnCanceled;
             _jumpAction.started -= JumpActionOnStarted;
