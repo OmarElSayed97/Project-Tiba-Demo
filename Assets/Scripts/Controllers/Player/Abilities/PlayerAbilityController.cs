@@ -13,10 +13,7 @@ namespace Controllers.Player.Abilities
 
 		[SerializeField, Tooltip("The max distance at which the player can a activate an ability at.")]
 		private float maxActivationDistance = 10f;
-
-		[SerializeField, Tooltip("The layer for the ability affected objects.")]
-		private LayerMask abilityLayer;
-
+		
 		[SerializeField, Tooltip("The radius of the ability aiming beam.")]
 		private float abilityBeamRadius = 1f;
 
@@ -24,9 +21,11 @@ namespace Controllers.Player.Abilities
 		private Transform aimingCenter;
 
 		[Space(10), Header("Debug")] [SerializeField, ReadOnly]
-		private AbilityPerformerBase selected;
-
+		private AbilityPerformerBase currentAbilityPerformerBase;
+		
+		[SerializeField, ReadOnly] private LayerMask abilityLayer;
 		[SerializeField, ReadOnly] private Ability selectedAbility;
+		[SerializeField, ReadOnly] private Ability currentAbility;
 		[SerializeField, ReadOnly] private float currentAbilityPoints;
 		[SerializeField, ReadOnly] private bool isPerformingAbility;
 		[SerializeField, ReadOnly] private bool isAbilityStarted;
@@ -45,10 +44,21 @@ namespace Controllers.Player.Abilities
 		{
 			//Cache the cursor controller
 			_cursorController = CursorController.Instance;
-			selected = null;
+			currentAbilityPerformerBase = null;
 			currentAbilityPoints = maxAbilityPoints;
 		}
 
+		private void OnEnable()
+		{
+			AbilityManager.Instance.OnAbilitySelected += OnAbilitySwitchedHandler;
+		}
+
+		private void OnDisable()
+		{
+			if(AbilityManager.Instance)
+				AbilityManager.Instance.OnAbilitySelected -= OnAbilitySwitchedHandler;
+		}
+		
 		private void Update()
 		{
 			AbilityFinder();
@@ -66,17 +76,17 @@ namespace Controllers.Player.Abilities
 			_abilityBeamDirection.z = 0;
 			
 			if (Physics.BoxCast(aimingCenterPosition, Vector3.one * abilityBeamRadius, _abilityBeamDirection, out _abilityBeamHit,
-				Quaternion.identity, maxActivationDistance, abilityLayer))
+				    Quaternion.identity, maxActivationDistance, abilityLayer))
 			{
 				if (_abilityBeamHit.collider.gameObject.TryGetComponent(typeof(AbilityPerformerBase), out _abilityPerformerComponent))
 				{
-					if (selected != null)
+					if (currentAbilityPerformerBase != null)
 					{
-						if (selected != ((AbilityPerformerBase)_abilityPerformerComponent))
+						if (currentAbilityPerformerBase != ((AbilityPerformerBase)_abilityPerformerComponent))
 						{
-							if (selected.IsAbilitySelected)
+							if (currentAbilityPerformerBase.IsAbilitySelected)
 							{
-								selected.DeselectAbility(OnAbilityDeselected);
+								currentAbilityPerformerBase.DeselectAbility(OnAbilityDeselected);
 							}	
 						}
 						else
@@ -86,20 +96,20 @@ namespace Controllers.Player.Abilities
 					}
 					if (!((AbilityPerformerBase)_abilityPerformerComponent).IsAbilityStarted)
 					{
-						selected = (AbilityPerformerBase)_abilityPerformerComponent;
-						selectedAbility = selected.Ability;
-						selected.SelectAbility(OnAbilitySelected);	
+						currentAbilityPerformerBase = (AbilityPerformerBase)_abilityPerformerComponent;
+						currentAbility = currentAbilityPerformerBase.Ability;
+						currentAbilityPerformerBase.SelectAbility(OnAbilitySelected);	
 					}
 					
 				}
 			}
 			else
 			{
-				if (selected != null)
+				if (currentAbilityPerformerBase != null)
 				{
-					selected.DeselectAbility(OnAbilityDeselected);
+					currentAbilityPerformerBase.DeselectAbility(OnAbilityDeselected);
 				}
-				selectedAbility = null;
+				currentAbility = null;
 			}
 		}
 
@@ -109,13 +119,13 @@ namespace Controllers.Player.Abilities
 			{
 				case true when !isPerformingAbility:
 				{
-					if (selected != null)
+					if (currentAbilityPerformerBase != null)
 					{
 						//Perform Ability Logic
-						if ((selectedAbility.IsTimeBased ? selectedAbility.Cost * Time.deltaTime : selectedAbility.Cost ) < currentAbilityPoints && !selected.IsAbilityStarted)
+						if ((currentAbility.IsTimeBased ? currentAbility.Cost * Time.deltaTime : currentAbility.Cost ) < currentAbilityPoints && !currentAbilityPerformerBase.IsAbilityStarted)
 						{
 							isPerformingAbility = true;
-							selected.PerformAbility(OnAbilityStarted, OnAbilityCanceled);
+							currentAbilityPerformerBase.PerformAbility(OnAbilityStarted, OnAbilityCanceled);
 						}
 					}
 					else
@@ -128,21 +138,21 @@ namespace Controllers.Player.Abilities
 				}
 				case true when isPerformingAbility && isAbilityStarted:
 				{
-					currentAbilityPoints -= selectedAbility.Cost * Time.deltaTime;
+					currentAbilityPoints -= currentAbility.Cost * Time.deltaTime;
 
 					if (currentAbilityPoints <= 0)
 					{
 						_inputController.performAbility = false;
-						selected.CancelAbility();
+						currentAbilityPerformerBase.CancelAbility();
 					}
 
 					break;
 				}
 				case false when isPerformingAbility:
 				{
-					if (selected != null)
+					if (currentAbilityPerformerBase != null)
 					{
-						selected.CancelAbility();
+						currentAbilityPerformerBase.CancelAbility();
 					}
 
 					break;
@@ -152,15 +162,15 @@ namespace Controllers.Player.Abilities
 
 		private void OnAbilityStarted(AbilityPerformerBase abilityPerformerBase)
 		{
-			if (abilityPerformerBase.Ability != selectedAbility)
+			if (abilityPerformerBase.Ability != currentAbility)
 			{
-				Debug.LogError($"Wrong Ability Started. Expected {this.selectedAbility} got {abilityPerformerBase.Ability}");
+				Debug.LogError($"Wrong Ability Started. Expected {this.currentAbility} got {abilityPerformerBase.Ability}");
 				return;
 			}
 				
-			if (!selectedAbility.IsTimeBased)
+			if (!currentAbility.IsTimeBased)
 			{
-				currentAbilityPoints -= selectedAbility.Cost;
+				currentAbilityPoints -= currentAbility.Cost;
 				isPerformingAbility = false;
 			}
 			else
@@ -176,9 +186,9 @@ namespace Controllers.Player.Abilities
 
 		private void OnAbilityDeselected(AbilityPerformerBase abilityPerformer)
 		{
-			if (selected != abilityPerformer) return;
-			selected = null;
-			selectedAbility = null;
+			if (currentAbilityPerformerBase != abilityPerformer) return;
+			currentAbilityPerformerBase = null;
+			currentAbility = null;
 		}
 		private void OnAbilityCanceled(AbilityPerformerBase abilityPerformer)
 		{
@@ -187,8 +197,20 @@ namespace Controllers.Player.Abilities
 			if(abilityPerformer.IsAbilitySelected)
 				abilityPerformer.DeselectAbility(null);
 			isPerformingAbility = false;
-			selected = null;
-			selectedAbility = null;
+			currentAbilityPerformerBase = null;
+			currentAbility = null;
+		}
+		
+		private void OnAbilitySwitchedHandler(Ability newAbility)
+		{
+			
+			if (currentAbility is { IsTimeBased: true } && newAbility.AbilityMask != currentAbility.AbilityMask)
+			{
+				currentAbilityPerformerBase.CancelAbility();
+			}
+
+			selectedAbility = newAbility;
+			abilityLayer = newAbility.AbilityMask;
 		}
 
 		private void OnDrawGizmosSelected()

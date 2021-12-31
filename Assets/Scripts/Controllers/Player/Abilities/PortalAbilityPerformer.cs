@@ -9,7 +9,7 @@ namespace Controllers.Player.Abilities
         [SerializeField] private GameObject openedObject;
         protected override void InitializeAbility()
         {
-            ability = AbilityManager.Instance.AbilityConfig.PortalAbility;
+            ability = AbilityManager.Instance.AbilityConfig.Portal;
             SetOtherPortal(otherPortal);
         }
 

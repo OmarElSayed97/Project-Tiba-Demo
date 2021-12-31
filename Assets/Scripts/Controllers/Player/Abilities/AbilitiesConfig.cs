@@ -7,11 +7,11 @@ namespace Controllers.Player.Abilities
     [CreateAssetMenu()]
     public class AbilitiesConfig : ScriptableObject
     {
-        [SerializeField] private Ability gravityAbility;
-        [SerializeField] private Ability portalAbility;
-        
-        public Ability GravityAbility => gravityAbility;
-        public Ability PortalAbility => portalAbility;
+        [SerializeField] private Ability gravity;
+        [SerializeField] private Ability portal;
+
+        public Ability Gravity => gravity;
+        public Ability Portal => portal;
     }
 
     [Serializable]
@@ -19,8 +19,10 @@ namespace Controllers.Player.Abilities
     {
         [SerializeField] private bool isTimeBased = false;
         [SerializeField] private float cost;
+        [SerializeField] private LayerMask abilityMask;
 
         public bool IsTimeBased => isTimeBased;
         public float Cost => cost;
+        public LayerMask AbilityMask => abilityMask;
     }
 }

@@ -15,12 +15,16 @@ namespace Controllers.Player
         private InputAction _runAction;
         private InputAction _jumpAction;
         private InputAction _abilityAction;
+        private InputAction _abilityOneAction;
+        private InputAction _abilityTwoAction;
 
         public bool run;
         public bool jump;
         public bool performAbility;
         public Vector2 Move { get; private set; }
         public Vector2 Look { get; private set; }
+
+        public event Action<int> OnAbilitySwitched;
 
         protected override void OnAwakeEvent()
         {
@@ -31,6 +35,8 @@ namespace Controllers.Player
             _jumpAction = _playerInput.actions["Jump"];
             _lookAction = _playerInput.actions["Look"];
             _abilityAction = _playerInput.actions["PerformAbility"];
+            _abilityOneAction = _playerInput.actions["Ability_One"];
+            _abilityTwoAction = _playerInput.actions["Ability_Two"];
         }
 
         private void OnEnable()
@@ -41,8 +47,9 @@ namespace Controllers.Player
             _jumpAction.canceled += JumpActionOnCanceled;
             _abilityAction.started += AbilityActionOnStarted;
             _abilityAction.canceled += AbilityActionOnCanceled;
+            _abilityOneAction.performed += AbilityOneActionOnPerformed;
+            _abilityTwoAction.performed += AbilityTwoActionOnPerformed;
         }
-
         public override void OnDisable()
         {
             base.OnDisable();
@@ -52,6 +59,8 @@ namespace Controllers.Player
             _jumpAction.canceled -= JumpActionOnCanceled;
             _abilityAction.started -= AbilityActionOnStarted;
             _abilityAction.canceled -= AbilityActionOnCanceled;
+            _abilityOneAction.performed -= AbilityOneActionOnPerformed;
+            _abilityTwoAction.performed -= AbilityTwoActionOnPerformed;
         }
         
         private void RunActionOnStarted(InputAction.CallbackContext obj)
@@ -81,6 +90,15 @@ namespace Controllers.Player
         {
             performAbility = false;
         }
+        private void AbilityOneActionOnPerformed(InputAction.CallbackContext obj)
+        {
+            OnAbilitySwitched?.Invoke(0);
+        }
+        private void AbilityTwoActionOnPerformed(InputAction.CallbackContext obj)
+        {
+            OnAbilitySwitched?.Invoke(1);
+        }
+        
 
         private void Update()
         {

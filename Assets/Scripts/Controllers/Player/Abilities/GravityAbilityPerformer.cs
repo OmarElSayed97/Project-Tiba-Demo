@@ -16,7 +16,7 @@ namespace Controllers.Player.Abilities
         }
         protected override void InitializeAbility()
         {
-            ability = AbilityManager.Instance.AbilityConfig.GravityAbility;
+            ability = AbilityManager.Instance.AbilityConfig.Gravity;
         }
         
         private void OnEnable()
