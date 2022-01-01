@@ -95,6 +95,14 @@ namespace Controllers.Player.Abilities
             teleportObj.position = transform.position;
         }
 
+        private void RemoveObject(Transform removedObject)
+        {
+            if (_teleportedObjects.Contains(removedObject))
+            {
+                _teleportedObjects.Remove(removedObject);
+            }
+        }
+
         private static Transform GetOuterParent(Transform child)
         {
             // var str = $"Child Enter {child.name} - Parent ";
