@@ -13,7 +13,7 @@ namespace Controllers.Player.Abilities
         private readonly Vector3 _gravity = new Vector3(0,-10,0);
         private Vector3 _downVelocity;
         private Vector3 _downDeltaPosition;
-        private RaycastHit hit;
+        private RaycastHit _hit;
         
         protected void Awake()
         {
@@ -69,13 +69,13 @@ namespace Controllers.Player.Abilities
             _downVelocity += _gravity * fixedDeltaTime;
             _downDeltaPosition = _downVelocity * fixedDeltaTime;
             var newYValue = _downDeltaPosition.y + _rigidbody.position.y;
-            if (_rigidbody.SweepTest(-transform.up, out hit, 4f, QueryTriggerInteraction.Ignore))
+            if (_rigidbody.SweepTest(-transform.up, out _hit, 1.5f, QueryTriggerInteraction.Ignore))
             {
                 // Debug.Log($"{hit.distance}");
-                if (newYValue - hit.point.y < 0.1f)
+                if (newYValue - _hit.point.y < 0.1f)
                 {
                     _downVelocity = Vector3.zero;
-                    _downDeltaPosition.y = hit.point.y;
+                    _downDeltaPosition.y = _hit.point.y;
                 }
             }
             _rigidbody.position += _downDeltaPosition;

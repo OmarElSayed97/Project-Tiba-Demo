@@ -11,6 +11,7 @@ namespace Controllers.Player.Abilities
         [SerializeField] private GameObject openedEffect;
 
         [SerializeField] private List<Transform> _teleportedObjects;
+        [SerializeField] private List<Transform> _enteredObjects;
         
         protected override void InitializeAbility()
         {
@@ -65,11 +66,16 @@ namespace Controllers.Player.Abilities
             Debug.Log($"{gameObject.name} Trigger Enter {other.gameObject.name}");
             
             var parent = GetOuterParent(other.gameObject.transform);
-            if (!_teleportedObjects.Contains(parent))
+            if (_teleportedObjects.Contains(parent))
+            {
+                otherPortal.RemoveObject(parent);
+                parent.SendMessage("OnSecondPortalEnter", SendMessageOptions.DontRequireReceiver);
+            }
+            else if (!_enteredObjects.Contains(parent))
             {
                 Debug.Log($"{gameObject.name} Teleporting {parent.name}");
-                parent.SendMessage("OnPortalEnter", SendMessageOptions.DontRequireReceiver);
-                _teleportedObjects.Add(parent);
+                parent.SendMessage("OnFirstPortalEnter", SendMessageOptions.DontRequireReceiver);
+                _enteredObjects.Add(parent);
                 otherPortal.TeleportObject(parent);
             }
             
@@ -82,9 +88,10 @@ namespace Controllers.Player.Abilities
             if (_teleportedObjects.Contains(parent))
             {
                 Debug.Log($"{gameObject.name} Removing {parent.name}");
-                parent.SendMessage("OnPortalExit", SendMessageOptions.DontRequireReceiver);
+                parent.SendMessage("OnSecondPortalExit", SendMessageOptions.DontRequireReceiver);
                 _teleportedObjects.Remove(parent);
             }
+            RemoveObject(parent);
         }
 
         private void TeleportObject(Transform teleportObj)
@@ -97,9 +104,10 @@ namespace Controllers.Player.Abilities
 
         private void RemoveObject(Transform removedObject)
         {
-            if (_teleportedObjects.Contains(removedObject))
+            if (_enteredObjects.Contains(removedObject))
             {
-                _teleportedObjects.Remove(removedObject);
+                removedObject.SendMessage("OnFirstPortalExit", SendMessageOptions.DontRequireReceiver);
+                _enteredObjects.Remove(removedObject);
             }
         }
 

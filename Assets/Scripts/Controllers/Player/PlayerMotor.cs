@@ -71,6 +71,7 @@ namespace Controllers.Player
 		// [SerializeField, ReadOnly] private bool hasLanded = false;
 
 		private Action _playerMovement;
+		private Action _playerAnimation;
 
 
 		private void Awake()
@@ -96,19 +97,20 @@ namespace Controllers.Player
 			_animatorDirection = Vector2.zero;
 			_moveDirection = Vector3.zero;
 			_movementVelocity = Vector3.zero;
-			_playerMovement = UpdateInput;
 		}
 		private void InitializeJumpVariables()
 		{
 			var timeToApex = maxJumpTime / 2;
 			gravity = (-2 * maxJumpHeight / Mathf.Pow(timeToApex, 2));
 			initialJumpingVelocity = (2 * maxJumpHeight) / timeToApex;
+			_playerAnimation = UpdateAnimator;
+			_playerMovement = UpdateInput;
 		}
 		
 		private void Update()
 		{
 			_playerMovement();
-			UpdateAnimator();
+			_playerAnimation();
 		}
 
 		private void FixedUpdate()
@@ -261,14 +263,28 @@ namespace Controllers.Player
 			_playerAnimator.SetBool(_animatorIsJumping, isJumping);
 		}
 
-		private void OnPortalEnter()
+		private void OnFirstPortalEnter()
 		{
+			Debug.Log("First Enter");
 			_playerMovement = () => { };
+			_playerAnimation = () => { };
 		}
 
-		private void OnPortalExit()
+		private void OnFirstPortalExit()
 		{
+			Debug.Log("First Exit");
 			_playerMovement = UpdateInput;
+			_playerAnimation = UpdateAnimator;
+		}
+
+		private void OnSecondPortalEnter()
+		{
+			Debug.Log("Second Enter");
+		}
+		
+		private void OnSecondPortalExit()
+		{
+			Debug.Log("Second Exit");
 		}
 
 		private void OnDrawGizmosSelected()
