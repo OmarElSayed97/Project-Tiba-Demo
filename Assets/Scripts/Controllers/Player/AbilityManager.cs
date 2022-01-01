@@ -23,7 +23,7 @@ namespace Controllers.Player
         public override void OnDisable()
         {
             base.OnDisable();
-            InputController.Instance.OnAbilitySwitched -= AbilitySwitchedHandler;
+            // InputController.Instance.OnAbilitySwitched -= AbilitySwitchedHandler;
         }
         
         private void AbilitySwitchedHandler(int abilityIndex)

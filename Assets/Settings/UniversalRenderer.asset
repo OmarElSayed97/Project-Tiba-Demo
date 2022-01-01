@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: CursorRender
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -25,7 +25,7 @@ MonoBehaviour:
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
     overrideDepthState: 1
-    depthCompareFunction: 8
+    depthCompareFunction: 5
     enableWrite: 1
     stencilSettings:
       overrideStencilState: 0
