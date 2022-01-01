@@ -50,13 +50,13 @@ namespace Controllers.Player.Abilities
 
 		private void OnEnable()
 		{
-			AbilityManager.Instance.OnAbilitySelected += OnAbilitySwitchedHandler;
+			AbilityManager.Instance.OnAbilitySwitched += OnAbilitySwitchedHandler;
 		}
 
 		private void OnDisable()
 		{
-			// if(AbilityManager.Instance != null)
-			// 	AbilityManager.Instance.OnAbilitySelected -= OnAbilitySwitchedHandler;
+			if(!AbilityManager.IsInstanceNull)
+				AbilityManager.Instance.OnAbilitySwitched -= OnAbilitySwitchedHandler;
 		}
 		
 		private void Update()
@@ -203,7 +203,6 @@ namespace Controllers.Player.Abilities
 		
 		private void OnAbilitySwitchedHandler(Ability newAbility)
 		{
-			
 			if (currentAbility is { IsTimeBased: true } && newAbility.AbilityMask != currentAbility.AbilityMask)
 			{
 				currentAbilityPerformerBase.CancelAbility();

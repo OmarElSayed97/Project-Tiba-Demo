@@ -646,6 +646,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CM 3rdPerson
       objectReference: {fileID: 0}
+    - target: {fileID: 7194253546993108486, guid: 9a598f27fd90ca44da123e61723c07f7, type: 3}
+      propertyPath: m_BiasX
+      value: 0.342
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194253546993108486, guid: 9a598f27fd90ca44da123e61723c07f7, type: 3}
+      propertyPath: m_SoftZoneWidth
+      value: 0.72
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a598f27fd90ca44da123e61723c07f7, type: 3}
 --- !u!1001 &956900874
