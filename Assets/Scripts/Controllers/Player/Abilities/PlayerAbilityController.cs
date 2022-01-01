@@ -55,8 +55,8 @@ namespace Controllers.Player.Abilities
 
 		private void OnDisable()
 		{
-			if(AbilityManager.Instance)
-				AbilityManager.Instance.OnAbilitySelected -= OnAbilitySwitchedHandler;
+			// if(AbilityManager.Instance != null)
+			// 	AbilityManager.Instance.OnAbilitySelected -= OnAbilitySwitchedHandler;
 		}
 		
 		private void Update()

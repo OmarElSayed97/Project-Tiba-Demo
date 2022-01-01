@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 375094519932058689}
   - component: {fileID: 2508625060062693513}
   - component: {fileID: 2508625060062693512}
-  - component: {fileID: 6467420718333830502}
+  - component: {fileID: 4166506131348530111}
   m_Layer: 9
   m_Name: Pot
   m_TagString: Untagged
@@ -116,21 +116,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327b725c859c554b8018b3e88c03141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionObject: {fileID: 5117861379871383661}
---- !u!64 &6467420718333830502
-MeshCollider:
+  selectionEffect: {fileID: 5117861379871383661}
+--- !u!135 &4166506131348530111
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2176476716133866900}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8517725900640002782, guid: 55d3480a9c7448340b3713f5d7e441f8, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.44
+  m_Center: {x: -0.00000025331974, y: 0.29319498, z: -0.0000005811453}
 --- !u!1 &5117861379746484071
 GameObject:
   m_ObjectHideFlags: 0

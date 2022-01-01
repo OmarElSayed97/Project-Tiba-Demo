@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7958238121448306761}
   - component: {fileID: 7958238121448306760}
+  - component: {fileID: 7255610501920978848}
   m_Layer: 8
   m_Name: Portal
   m_TagString: Untagged
@@ -131,6 +132,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.32624736, y: 1.8963801, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7255610501920978848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7958238121448306762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a38717af818caa4cb35e835938cc5f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherPortal: {fileID: 0}
+  selectionEffect: {fileID: 7958238122819753548}
+  openedEffect: {fileID: 7958238120861977160}
 --- !u!1 &7958238122379739440
 GameObject:
   m_ObjectHideFlags: 0

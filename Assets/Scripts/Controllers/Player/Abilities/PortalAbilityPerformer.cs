@@ -5,8 +5,8 @@ namespace Controllers.Player.Abilities
     public class PortalAbilityPerformer : AbilityPerformerBase
     {
         [SerializeField] private PortalAbilityPerformer otherPortal;
-        [SerializeField] private GameObject selectionObject;
-        [SerializeField] private GameObject openedObject;
+        [SerializeField] private GameObject selectionEffect;
+        [SerializeField] private GameObject openedEffect;
         protected override void InitializeAbility()
         {
             ability = AbilityManager.Instance.AbilityConfig.Portal;
@@ -33,25 +33,25 @@ namespace Controllers.Player.Abilities
         private void OnOtherPortalSelected(AbilityPerformerBase abilityPerformerBase)
         {
             isAbilitySelected = true;
-            selectionObject.SetActive(true);
+            selectionEffect.SetActive(true);
         }
 
         private void OnOtherPortalDeselected(AbilityPerformerBase abilityPerformer)
         {
             isAbilitySelected = false;
-            selectionObject.SetActive(false);
+            selectionEffect.SetActive(false);
         }
         
         private void OnOtherPortalStarted(AbilityPerformerBase abilityPerformerBase)
         {
             isAbilityStarted = true;
-            openedObject.SetActive(true);
+            openedEffect.SetActive(true);
         }
 
         private void OnOtherPortalCanceled(AbilityPerformerBase abilityPerformer)
         {
             isAbilityStarted = false;
-            openedObject.SetActive(false);
+            openedEffect.SetActive(false);
         }
     }
 }
