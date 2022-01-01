@@ -1,3 +1,4 @@
+using System;
 using Cinemachine.Utility;
 using Unity.Collections;
 using UnityEngine;
@@ -69,6 +70,8 @@ namespace Controllers.Player
 		// [SerializeField, ReadOnly] private bool hasJumped = false;
 		// [SerializeField, ReadOnly] private bool hasLanded = false;
 
+		private Action _playerMovement;
+
 
 		private void Awake()
 		{
@@ -93,6 +96,7 @@ namespace Controllers.Player
 			_animatorDirection = Vector2.zero;
 			_moveDirection = Vector3.zero;
 			_movementVelocity = Vector3.zero;
+			_playerMovement = UpdateInput;
 		}
 		private void InitializeJumpVariables()
 		{
@@ -103,7 +107,7 @@ namespace Controllers.Player
 		
 		private void Update()
 		{
-			UpdateInput();
+			_playerMovement();
 			UpdateAnimator();
 		}
 
@@ -112,7 +116,7 @@ namespace Controllers.Player
 			if (_controller.isGrounded)
 			{
 				//ignore vertical velocity on ground
-				_movementVelocity.y = 0;
+				_movementVelocity.y = -0.2f;
 				isJumping = false;
 			}
 			else
@@ -134,6 +138,7 @@ namespace Controllers.Player
 				// Debug.Log($"Jumping: {playerAltitude}");
 				playerAltitude = transform.position.y - _groundRaycastHit.point.y;
 			}
+			
 		}
 
 		private void UpdateInput()
@@ -254,6 +259,16 @@ namespace Controllers.Player
 			_playerAnimator.SetFloat(_animatorPlayerAltitude, playerAltitude);
 			_playerAnimator.SetBool(_animatorIsRunning, _inputController.run);
 			_playerAnimator.SetBool(_animatorIsJumping, isJumping);
+		}
+
+		private void OnPortalEnter()
+		{
+			_playerMovement = () => { };
+		}
+
+		private void OnPortalExit()
+		{
+			_playerMovement = UpdateInput;
 		}
 
 		private void OnDrawGizmosSelected()
