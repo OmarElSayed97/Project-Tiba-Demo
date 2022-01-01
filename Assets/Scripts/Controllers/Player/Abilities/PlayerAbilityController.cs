@@ -22,6 +22,8 @@ namespace Controllers.Player.Abilities
 
 		[Space(10), Header("Debug")] [SerializeField, ReadOnly]
 		private AbilityPerformerBase currentAbilityPerformerBase;
+
+		[SerializeField] private GameObject GFX;
 		
 		[SerializeField, ReadOnly] private LayerMask abilityLayer;
 		[SerializeField, ReadOnly] private Ability selectedAbility;
@@ -210,6 +212,16 @@ namespace Controllers.Player.Abilities
 
 			selectedAbility = newAbility;
 			abilityLayer = newAbility.AbilityMask;
+		}
+
+		private void OnFirstPortalEnter()
+		{
+			GFX.gameObject.SetActive(false);
+		}
+
+		private void OnSecondPortalEnter()
+		{
+			GFX.gameObject.SetActive(true);
 		}
 
 		private void OnDrawGizmosSelected()

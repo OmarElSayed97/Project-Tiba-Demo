@@ -70,8 +70,9 @@ namespace Controllers.Player
 		// [SerializeField, ReadOnly] private bool hasJumped = false;
 		// [SerializeField, ReadOnly] private bool hasLanded = false;
 
-		private Action _playerMovement;
-		private Action _playerAnimation;
+		private Action PlayerMovementAction;
+		private Action PlayerAnimationAction;
+		private Action ApplyGravityAction;
 
 
 		private void Awake()
@@ -85,35 +86,39 @@ namespace Controllers.Player
 
 			_inputController = GetComponent<InputController>();
 			_controller = GetComponent<CharacterController>();
+			_playerAnimator = GetComponent<Animator>();
 			_mainCamera = Camera.main;
 			_mainCameraTransform = _mainCamera?.gameObject.transform;
 
 			InitializeJumpVariables();
 		}
-
-		private void OnEnable()
-		{
-			_playerAnimator = GetComponent<Animator>();
-			_animatorDirection = Vector2.zero;
-			_moveDirection = Vector3.zero;
-			_movementVelocity = Vector3.zero;
-		}
+		
 		private void InitializeJumpVariables()
 		{
 			var timeToApex = maxJumpTime / 2;
 			gravity = (-2 * maxJumpHeight / Mathf.Pow(timeToApex, 2));
 			initialJumpingVelocity = (2 * maxJumpHeight) / timeToApex;
-			_playerAnimation = UpdateAnimator;
-			_playerMovement = UpdateInput;
+			_animatorDirection = Vector2.zero;
+			_moveDirection = Vector3.zero;
+			_movementVelocity = Vector3.zero;
+			PlayerAnimationAction = UpdateAnimator;
+			PlayerMovementAction = UpdateInput;
+			ApplyGravityAction = ApplyGravity;
 		}
 		
 		private void Update()
 		{
-			_playerMovement();
-			_playerAnimation();
+			PlayerMovementAction();
+			PlayerAnimationAction();
 		}
 
 		private void FixedUpdate()
+		{
+			ApplyGravityAction();
+			GroundCheck();
+		}
+
+		private void ApplyGravity()
 		{
 			if (_controller.isGrounded)
 			{
@@ -126,8 +131,6 @@ namespace Controllers.Player
 				//Apply Gravity
 				_movementVelocity.y += gravity * Time.deltaTime;
 			}
-
-			GroundCheck();
 		}
 
 		private void GroundCheck()
@@ -135,7 +138,7 @@ namespace Controllers.Player
 			var transform1 = transform;
 			_groundCheckRay.origin = transform1.position;
 			_groundCheckRay.direction = -transform1.up;
-			if (Physics.SphereCast(_groundCheckRay, 0.3f, out _groundRaycastHit, 10f))
+			if (Physics.SphereCast(_groundCheckRay, 0.3f, out _groundRaycastHit, 10f, 1,queryTriggerInteraction: QueryTriggerInteraction.Ignore))
 			{
 				// Debug.Log($"Jumping: {playerAltitude}");
 				playerAltitude = transform.position.y - _groundRaycastHit.point.y;
@@ -265,26 +268,20 @@ namespace Controllers.Player
 
 		private void OnFirstPortalEnter()
 		{
-			Debug.Log("First Enter");
-			_playerMovement = () => { };
-			_playerAnimation = () => { };
-		}
-
-		private void OnFirstPortalExit()
-		{
-			Debug.Log("First Exit");
-			_playerMovement = UpdateInput;
-			_playerAnimation = UpdateAnimator;
+			// Debug.Log("First Enter");
+			PlayerMovementAction = () => { };
+			PlayerAnimationAction = () => { };
+			ApplyGravityAction = () => { };
+			// _controller.enabled = false;
 		}
 
 		private void OnSecondPortalEnter()
 		{
-			Debug.Log("Second Enter");
-		}
-		
-		private void OnSecondPortalExit()
-		{
-			Debug.Log("Second Exit");
+			// Debug.Log("First Exit");
+			// _controller.enabled = true;
+			PlayerMovementAction = UpdateInput;
+			PlayerAnimationAction = UpdateAnimator;
+			ApplyGravityAction = ApplyGravity;
 		}
 
 		private void OnDrawGizmosSelected()

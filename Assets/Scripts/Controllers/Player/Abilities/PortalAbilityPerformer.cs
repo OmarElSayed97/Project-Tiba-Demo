@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Controllers.Player.Abilities
@@ -99,7 +100,16 @@ namespace Controllers.Player.Abilities
             if (_teleportedObjects.Contains(teleportObj))
                 return;
             _teleportedObjects.Add(teleportObj);
-            teleportObj.position = transform.position;
+            if (teleportObj.CompareTag("Player"))
+            {
+                teleportObj.DOMove(transform.position, 0.3f)
+                    .SetEase(Ease.Linear);
+            }
+            else
+            {
+                teleportObj.position = transform.position;    
+            }
+            
         }
 
         private void RemoveObject(Transform removedObject)
