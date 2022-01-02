@@ -1799,33 +1799,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1533609665}
     m_Modifications:
-    - target: {fileID: 8672733562203931390, guid: b3a9942ad639bc140bcdef2ecf2f791b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0552499
-      objectReference: {fileID: 0}
-    - target: {fileID: 8672733562203931390, guid: b3a9942ad639bc140bcdef2ecf2f791b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.86937505
-      objectReference: {fileID: 0}
-    - target: {fileID: 8672733562203931390, guid: b3a9942ad639bc140bcdef2ecf2f791b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.018174
-      objectReference: {fileID: 0}
-    - target: {fileID: 8672733562203931390, guid: b3a9942ad639bc140bcdef2ecf2f791b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.12376
-      objectReference: {fileID: 0}
-    - target: {fileID: 8672733562659621871, guid: b3a9942ad639bc140bcdef2ecf2f791b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fdb91b107d2b0de4fac948035971e64d, type: 2}
     - target: {fileID: 8672733563857786488, guid: b3a9942ad639bc140bcdef2ecf2f791b, type: 3}
       propertyPath: m_Name
       value: AbilityFloor
-      objectReference: {fileID: 0}
-    - target: {fileID: 8672733563857786488, guid: b3a9942ad639bc140bcdef2ecf2f791b, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8672733563857786489, guid: b3a9942ad639bc140bcdef2ecf2f791b, type: 3}
       propertyPath: m_RootOrder
