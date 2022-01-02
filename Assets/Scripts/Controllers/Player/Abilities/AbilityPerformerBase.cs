@@ -33,6 +33,8 @@ namespace Controllers.Player.Abilities
 
 		public void SelectAbility(Action<AbilityPerformerBase> onSelected)
 		{
+			if (isAbilitySelected)
+				return;
 			_playerSelectedAction = onSelected;
 			Selected += _playerSelectedAction;
 			SelectedLogic();
@@ -40,6 +42,8 @@ namespace Controllers.Player.Abilities
 		}
 		public void DeselectAbility(Action<AbilityPerformerBase> onDeselected)
 		{
+			if (!isAbilitySelected)
+				return;
 			_playerDeselectedAction = onDeselected;
 			Deselected += _playerDeselectedAction;
 			DeselectedLogic();
@@ -47,6 +51,8 @@ namespace Controllers.Player.Abilities
 		}
 		public void PerformAbility(Action<AbilityPerformerBase> onStarted, Action<AbilityPerformerBase> onCanceled)
 		{
+			if (isAbilityStarted)
+				return;
 			_playerStartedAction = onStarted;
 			_playerCanceledAction = onCanceled;
 			Started += _playerStartedAction;
@@ -56,6 +62,8 @@ namespace Controllers.Player.Abilities
 		}
 		public void CancelAbility()
 		{
+			if (!isAbilityStarted)
+				return;
 			AbilityCancelLogic();
 			isAbilityStarted = false;
 		}

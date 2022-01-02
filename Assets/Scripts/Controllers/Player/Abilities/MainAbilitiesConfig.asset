@@ -15,12 +15,14 @@ MonoBehaviour:
   gravity:
     isTimeBased: 1
     cost: 20
+    enabledTime: 0
     abilityMask:
       serializedVersion: 2
       m_Bits: 512
   portal:
     isTimeBased: 0
     cost: 10
+    enabledTime: 5
     abilityMask:
       serializedVersion: 2
       m_Bits: 256

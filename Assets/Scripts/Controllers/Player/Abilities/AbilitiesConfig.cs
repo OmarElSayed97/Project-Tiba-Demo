@@ -19,10 +19,12 @@ namespace Controllers.Player.Abilities
     {
         [SerializeField] private bool isTimeBased = false;
         [SerializeField] private float cost;
+        [SerializeField] private float enabledTime;
         [SerializeField] private LayerMask abilityMask;
 
         public bool IsTimeBased => isTimeBased;
         public float Cost => cost;
+        public float EnabledTime => enabledTime;
         public LayerMask AbilityMask => abilityMask;
     }
 }

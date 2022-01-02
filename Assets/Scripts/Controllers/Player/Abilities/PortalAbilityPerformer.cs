@@ -11,13 +11,14 @@ namespace Controllers.Player.Abilities
         [SerializeField] private GameObject selectionEffect;
         [SerializeField] private GameObject openedEffect;
 
-        [SerializeField] private List<Transform> _teleportedObjects;
-        [SerializeField] private List<Transform> _enteredObjects;
-        
+        [SerializeField] private List<Transform> teleportedObjects;
+        [SerializeField] private List<Transform> enteredObjects;
+
+        private float _timer;
         protected override void InitializeAbility()
         {
             ability = AbilityManager.Instance.AbilityConfig.Portal;
-            _teleportedObjects = new List<Transform>();
+            teleportedObjects = new List<Transform>();
             SetOtherPortal(otherPortal);
         }
 
@@ -38,6 +39,37 @@ namespace Controllers.Player.Abilities
             otherPortal.Canceled += OnOtherPortalCanceled;
         }
 
+        #region PortalEventHandlers
+
+        protected override void SelectedLogic()
+        {
+            selectionEffect.SetActive(true);
+            base.SelectedLogic();
+        }
+
+        protected override void DeselectedLogic()
+        {
+            selectionEffect.SetActive(false);
+            base.DeselectedLogic();
+        }
+
+        protected override void AbilityStartedLogic()
+        {
+            openedEffect.SetActive(true);
+            base.AbilityStartedLogic();
+            StartTimer();
+        }
+
+        protected override void AbilityCancelLogic()
+        {
+            openedEffect.SetActive(false);
+            base.AbilityCancelLogic();
+        }
+
+        #endregion
+
+        #region OtherPortalEventHandlers
+        
         private void OnOtherPortalSelected(AbilityPerformerBase abilityPerformerBase)
         {
             isAbilitySelected = true;
@@ -61,22 +93,33 @@ namespace Controllers.Player.Abilities
             isAbilityStarted = false;
             openedEffect.SetActive(false);
         }
+        
+        #endregion
 
+        private void StartTimer()
+        {
+            _timer = 0;
+            DOTween.To(() => _timer, x => _timer = x, 1, ability.EnabledTime)
+                .OnComplete(CancelAbility);
+        }
         private void OnTriggerEnter(Collider other)
         {
+            if (!isAbilityStarted)
+                return;
+            
             Debug.Log($"{gameObject.name} Trigger Enter {other.gameObject.name}");
             
             var parent = GetOuterParent(other.gameObject.transform);
-            if (_teleportedObjects.Contains(parent))
+            if (teleportedObjects.Contains(parent))
             {
                 otherPortal.RemoveObject(parent);
                 parent.SendMessage("OnSecondPortalEnter", SendMessageOptions.DontRequireReceiver);
             }
-            else if (!_enteredObjects.Contains(parent))
+            else if (!enteredObjects.Contains(parent))
             {
                 Debug.Log($"{gameObject.name} Teleporting {parent.name}");
                 parent.SendMessage("OnFirstPortalEnter", SendMessageOptions.DontRequireReceiver);
-                _enteredObjects.Add(parent);
+                enteredObjects.Add(parent);
                 otherPortal.TeleportObject(parent);
             }
             
@@ -84,22 +127,26 @@ namespace Controllers.Player.Abilities
 
         private void OnTriggerExit(Collider other)
         {
+            if (!isAbilityStarted)
+                return;
+            
             Debug.Log($"{gameObject.name} Trigger Exit {other.gameObject.name}");
+            
             var parent = GetOuterParent(other.gameObject.transform);
-            if (_teleportedObjects.Contains(parent))
+            if (teleportedObjects.Contains(parent))
             {
                 Debug.Log($"{gameObject.name} Removing {parent.name}");
                 parent.SendMessage("OnSecondPortalExit", SendMessageOptions.DontRequireReceiver);
-                _teleportedObjects.Remove(parent);
+                teleportedObjects.Remove(parent);
             }
             RemoveObject(parent);
         }
 
         private void TeleportObject(Transform teleportObj)
         {
-            if (_teleportedObjects.Contains(teleportObj))
+            if (teleportedObjects.Contains(teleportObj))
                 return;
-            _teleportedObjects.Add(teleportObj);
+            teleportedObjects.Add(teleportObj);
             if (teleportObj.CompareTag("Player"))
             {
                 teleportObj.DOMove(transform.position, 0.3f)
@@ -114,10 +161,10 @@ namespace Controllers.Player.Abilities
 
         private void RemoveObject(Transform removedObject)
         {
-            if (_enteredObjects.Contains(removedObject))
+            if (enteredObjects.Contains(removedObject))
             {
                 removedObject.SendMessage("OnFirstPortalExit", SendMessageOptions.DontRequireReceiver);
-                _enteredObjects.Remove(removedObject);
+                enteredObjects.Remove(removedObject);
             }
         }
 
