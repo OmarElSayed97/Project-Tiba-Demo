@@ -884,6 +884,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 7851051031858396091, guid: 7cc31b980eeed5f42a7f93d48295a7cc, type: 3}
+      propertyPath: far clip plane
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851051031858396091, guid: 7cc31b980eeed5f42a7f93d48295a7cc, type: 3}
+      propertyPath: near clip plane
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 7851051031858396092, guid: 7cc31b980eeed5f42a7f93d48295a7cc, type: 3}
       propertyPath: m_RootOrder
       value: 2
