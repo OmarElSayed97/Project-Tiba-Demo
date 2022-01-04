@@ -8,16 +8,16 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wall
-    second: {fileID: 2100000, guid: e93d2dbbf93ca4c60b3d0f2f0d21e38c, type: 2}
+    second: {fileID: 2100000, guid: 303c8a67d28d84456a20d681e3927628, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wall Slice
-    second: {fileID: 2100000, guid: b5515f4fd8b27410baa78ef9f699b2df, type: 2}
+    second: {fileID: 2100000, guid: 116b327e3476249ed888ceefed9e6de5, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 0
-    materialSearch: 1
+    materialName: 1
+    materialSearch: 0
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
