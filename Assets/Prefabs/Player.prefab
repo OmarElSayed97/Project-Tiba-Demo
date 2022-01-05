@@ -106,13 +106,16 @@ MonoBehaviour:
   speed: 15
   groundDrag: 25
   airDrag: 1
-  input2D: 1
   dragInputFactor: 0.8
-  maxSpeed: 2.3
+  maxSpeed: 3.5
   rotationSpeed: 10
   jumpUpFactor: 0.7
-  runModifier: 2.5
+  sneakModifier: 0.3
   gravity: -9.8
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  groundCheckerOffset: {x: 0, y: 0, z: 0}
   maxJumpHeight: 3.5
   maxJumpTime: 1
   maxBounceJumpCount: 1
@@ -136,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
-  run: 0
+  walk: 0
   jump: 0
   performAbility: 0
 --- !u!114 &1327738630173977740
