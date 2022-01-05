@@ -105,7 +105,7 @@ namespace Controllers.Player
 			_animatorDirection = Vector2.zero;
 			_moveDirection = Vector3.zero;
 			_movementVelocity = Vector3.zero;
-			groundCheckerOffset = Vector3.up * (_controller.radius + _controller.skinWidth);
+			groundCheckerOffset = Vector3.up * (_controller.radius + _controller.skinWidth + 0.05f);
 			PlayerAnimationAction = UpdateAnimator;
 			PlayerMovementAction = UpdateInput;
 			ApplyGravityAction = ApplyGravity;

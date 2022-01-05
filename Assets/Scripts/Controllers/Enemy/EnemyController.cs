@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace Controllers.Enemy
 {
+    [RequireComponent(typeof(CharacterController))]
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private Transform GFX;
@@ -17,22 +18,42 @@ namespace Controllers.Enemy
         [SerializeField] private float followSpeed = 10f;
         [SerializeField] private float followMinDistance = 2f;
         [SerializeField] private bool followState;
+        [SerializeField] private LayerMask killMask;
+        [SerializeField, Range(0f, 1f)] private float gravityFactor = 0.8f;
         private float _playerDistance;
+        private CharacterController _controller;
 
         private RaycastHit _hit;
         private Ray _ray;
+        private CollisionFlags _flags;
 
         private Vector3 _movementDirection;
+        private Vector3 _verticalVelocity;
+
+        private float _headDetectionDistance;
 
         private Action _currentState;
+        private Action _previousState;
+        private Action _gravityAction;
+        private Action _headDetector;
         
         private void Start()
         {
             playerTransform = InputController.Instance.transform;
+            _controller = GetComponent<CharacterController>();
+            _headDetectionDistance = (_controller.height) + 0.2f;
             GFX.DOLocalMoveY(0.35f, 0.8f)
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetEase(Ease.Linear);
             _currentState = Patrol;
+            _gravityAction = ApplyGravity;
+            _headDetector = HeadDetector;
+        }
+
+        private void FixedUpdate()
+        {
+            _gravityAction();
+            _headDetector();
         }
 
         private void Update()
@@ -44,16 +65,13 @@ namespace Controllers.Enemy
         private void DetectPlayer()
         {
             var position = transform.position;
-            _ray.origin = position;
+            _ray.origin = position + playerOffset;
             _ray.direction = ((playerTransform.position + playerOffset) - position).normalized;
-            if (Physics.Raycast(_ray, out _hit, detectionRadius))
+            if (Physics.Raycast(_ray, out _hit, detectionRadius, -1, QueryTriggerInteraction.Ignore) && _hit.collider.gameObject.CompareTag("Player"))
             {
-                if (_hit.collider.gameObject.CompareTag("Player"))
-                {
-                    followState = true;
-                    _currentState = FollowPlayer;
-                    _playerDistance = _hit.distance;
-                }
+                followState = true;
+                _currentState = FollowPlayer;
+                _playerDistance = _hit.distance;
             }
             else
             {
@@ -61,14 +79,51 @@ namespace Controllers.Enemy
                 _currentState = Patrol;
             }
         }
-        
+
+        private void ApplyGravity()
+        {
+            if (!_controller.isGrounded)
+            {
+                _verticalVelocity += Physics.gravity * (gravityFactor * Time.fixedDeltaTime);
+                _flags = _controller.Move(_verticalVelocity * Time.fixedDeltaTime);
+            }
+            else
+            {
+                _verticalVelocity.y = 0;
+            }
+        }
+
+        private void OnFirstPortalEnter()
+        {
+            _previousState = _currentState;
+            _currentState = () => { };
+            _gravityAction = () => { };
+            _headDetector = () => { };
+        }
+
+        private void OnFirstPortalExit()
+        {
+            _currentState = _previousState;
+            _gravityAction = ApplyGravity;
+            _headDetector = HeadDetector;
+        }
+
+        private void HeadDetector()
+        {
+            if (Physics.Raycast(transform.position, transform.up, _headDetectionDistance ,killMask, QueryTriggerInteraction.Collide))
+            {
+                KillEnemy();
+            }
+        }
+
+
         private void FollowPlayer()
         {
             _movementDirection = _ray.direction * (followSpeed * Time.deltaTime);
             _movementDirection.y = 0;
             if (_playerDistance > followMinDistance)
             {
-                transform.position += _movementDirection;    
+                _controller.Move(_movementDirection);
             }
             
         }
@@ -77,7 +132,15 @@ namespace Controllers.Enemy
         {
             
         }
-        
-        
+
+        private void KillEnemy()
+        {
+            gameObject.SetActive(false);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawRay(_ray);
+        }
     }
 }

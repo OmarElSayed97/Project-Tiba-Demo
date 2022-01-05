@@ -72,13 +72,14 @@ namespace Controllers.Player.Abilities
             if (_rigidbody.SweepTest(-transform.up, out _hit, 1.5f, QueryTriggerInteraction.Ignore))
             {
                 // Debug.Log($"{hit.distance}");
-                if (newYValue - _hit.point.y < 0.1f)
+                if (newYValue - _hit.point.y < 0.05f)
                 {
                     _downVelocity = Vector3.zero;
-                    _downDeltaPosition.y = _hit.point.y;
+                    _downDeltaPosition.y = _hit.point.y + 0.05f;
                 }
             }
-            _rigidbody.position += _downDeltaPosition;
+            if(_downDeltaPosition.y < 0)
+                _rigidbody.position += _downDeltaPosition;
         }
     }
 }
