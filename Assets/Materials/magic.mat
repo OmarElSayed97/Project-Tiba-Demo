@@ -62,9 +62,10 @@ Material:
     - Vector1_c1a99f78655b4f7692b4d0114754cb33: -0.04
     - _BorderPower: 0.63
     - _BorderSize: 44.56
+    - _Distortion_Amount: -3.27
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - Color_0c1e93d3172f4dfe97dcb0cfc094d603: {r: 5.4777765, g: 1.8816165, b: 1.8385917, a: 0}
-    - _BorderColor: {r: 255.99997, g: 88.460724, b: 0, a: 0}
+    - Color_0c1e93d3172f4dfe97dcb0cfc094d603: {r: 7.3132625, g: 7.3132625, b: 7.3132625, a: 0}
+    - _BorderColor: {r: 341.78006, g: 341.78006, b: 341.78006, a: 0}
   m_BuildTextureStacks: []
