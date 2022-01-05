@@ -37,7 +37,7 @@ namespace Controllers.Player
 		[SerializeField] private float speed = 3f;
 		[SerializeField] private float groundDrag = 10f;
 		[SerializeField] private float airDrag = 15f;
-		[SerializeField] private bool input2D = false;
+		// [SerializeField] private bool input2D = false;
 		[SerializeField, Range(0f, 1f)] private float dragInputFactor = 0.5f;
 		[SerializeField] private float maxSpeed = 5f;
 		[SerializeField] private float rotationSpeed = 200f;
@@ -46,8 +46,10 @@ namespace Controllers.Player
 		// private float jumpSpeed = 10f;
 
 		[SerializeField, Range(0f, 1f)] private float jumpUpFactor = 0.7f;
-		[SerializeField, Range(1f, 3f)] private float runModifier;
+		[SerializeField, Range(0f, 1f)] private float sneakModifier;
 		[SerializeField] private float gravity = -9.8f;
+		[SerializeField] private LayerMask groundLayerMask;
+		[SerializeField] private Vector3 groundCheckerOffset;
 
 		[SerializeField, Tooltip("The maximum height the player will reach when jumping.")]
 		private float maxJumpHeight = 2f;
@@ -62,7 +64,7 @@ namespace Controllers.Player
 
 		[Space(10), Header("Debug")] [SerializeField, ReadOnly]
 		private float initialJumpingVelocity;
-
+		
 		[SerializeField, ReadOnly] private float playerAltitude;
 		[SerializeField, ReadOnly] private float jumpCoolDownTimer;
 		[SerializeField, ReadOnly] private float bounceJumpsCounter;
@@ -103,6 +105,7 @@ namespace Controllers.Player
 			_animatorDirection = Vector2.zero;
 			_moveDirection = Vector3.zero;
 			_movementVelocity = Vector3.zero;
+			groundCheckerOffset = Vector3.up * (_controller.radius + _controller.skinWidth);
 			PlayerAnimationAction = UpdateAnimator;
 			PlayerMovementAction = UpdateInput;
 			ApplyGravityAction = ApplyGravity;
@@ -138,9 +141,9 @@ namespace Controllers.Player
 		private void GroundCheck()
 		{
 			var transform1 = transform;
-			_groundCheckRay.origin = transform1.position;
+			_groundCheckRay.origin = transform1.position + groundCheckerOffset;
 			_groundCheckRay.direction = -transform1.up;
-			if (Physics.SphereCast(_groundCheckRay, 0.3f, out _groundRaycastHit, 10f, 1,queryTriggerInteraction: QueryTriggerInteraction.Ignore))
+			if (Physics.SphereCast(_groundCheckRay, _controller.radius, out _groundRaycastHit, 10f, groundLayerMask,queryTriggerInteraction: QueryTriggerInteraction.Ignore))
 			{
 				// Debug.Log($"Jumping: {playerAltitude}");
 				playerAltitude = transform.position.y - _groundRaycastHit.point.y;
@@ -163,34 +166,34 @@ namespace Controllers.Player
 			var cameraForward = _mainCameraTransform.forward;
 			var verticalVelocity = _movementVelocity.y;
 
-			if (input2D)
-			{
-				_moveDirection = Vector3.right * _moveInput.x;
-			}
-			else
-			{
-				_moveDirection = transform.right * _moveInput.x + transform.forward * _moveInput.y;
-			}
+			// if (input2D)
+			// {
+			_moveDirection = Vector3.right * _moveInput.x;
+			// }
+			// else
+			// {
+			// 	_moveDirection = transform.right * _moveInput.x + transform.forward * _moveInput.y;
+			// }
 
 			_moveDirection.y = 0;
 			_movementVelocity.y = verticalVelocity;
-
+			
 			_moveDirection.Normalize();
 
 			//Rotate the Player direction to movement Direction
-			if (input2D)
-			{
-				_lookDirection = Vector3
-					.Lerp(transform.forward, _moveInput.x * Vector3.right, deltaTime * rotationSpeed * 10)
-					.ProjectOntoPlane(Vector3.up)
-					.normalized;
-			}
-			else
-			{
-				_lookDirection = Vector3
-					.Lerp(transform.forward, cameraForward, deltaTime * rotationSpeed * _moveDirection.magnitude)
-					.ProjectOntoPlane(Vector3.up).normalized;
-			}
+			// if (input2D)
+			// {
+			_lookDirection = Vector3
+				.Lerp(transform.forward, _moveInput.x * Vector3.right, deltaTime * rotationSpeed * 10)
+				.ProjectOntoPlane(Vector3.up)
+				.normalized;
+			// }
+			// else
+			// {
+			// 	_lookDirection = Vector3
+			// 		.Lerp(transform.forward, cameraForward, deltaTime * rotationSpeed * _moveDirection.magnitude)
+			// 		.ProjectOntoPlane(Vector3.up).normalized;
+			// }
 			if(_lookDirection != Vector3.zero)
 				transform.rotation = Quaternion.LookRotation(_lookDirection, Vector3.up);
 
@@ -246,26 +249,27 @@ namespace Controllers.Player
 			                     ((1 - (_moveDirection.magnitude * dragInputFactor)) *
 			                      (_controller.isGrounded ? groundDrag : airDrag) * Time.deltaTime);
 
-			_movementVelocity = Vector3.ClampMagnitude(_movementVelocity, _inputController.run ? maxSpeed * runModifier : maxSpeed);
+			_movementVelocity = Vector3.ClampMagnitude(_movementVelocity, _inputController.walk ? maxSpeed * sneakModifier : maxSpeed);
+			_movementVelocity.x = Mathf.Abs(_movementVelocity.x) < 0.05f ? 0 : _movementVelocity.x; 
 			_movementVelocity.y = verticalVelocity;
 			_collisionFlags = _controller.Move(_movementVelocity * Time.deltaTime);
 		}
 
-		private void UpdateAnimator()
+		private void UpdateAnimator()	
 		{
 			var deltaTime = Time.deltaTime;
-			if (input2D)
-			{
-				_playerAnimator.SetFloat(_animatorY, Mathf.Abs(_animatorDirection.x * (_inputController.run ? runModifier : 1)), 0.1f, deltaTime);
-			}
-			else
-			{
-				_playerAnimator.SetFloat(_animatorX, _animatorDirection.x, 0.1f, deltaTime);
-				_playerAnimator.SetFloat(_animatorY, _animatorDirection.y, 0.1f, deltaTime);
-			}
+			// if (input2D)
+			// {
+			_playerAnimator.SetFloat(_animatorY, Mathf.Abs(_movementVelocity.x), 0.2f, deltaTime);
+			// }
+			// else
+			// {
+			// 	_playerAnimator.SetFloat(_animatorX, _animatorDirection.x, 0.1f, deltaTime);
+			// 	_playerAnimator.SetFloat(_animatorY, _animatorDirection.y, 0.1f, deltaTime);
+			// }
 			_playerAnimator.SetFloat(_animatorVerticalVelocity, _movementVelocity.y, 0.2f, deltaTime);
 			_playerAnimator.SetFloat(_animatorPlayerAltitude, playerAltitude);
-			_playerAnimator.SetBool(_animatorIsRunning, _inputController.run);
+			_playerAnimator.SetBool(_animatorIsRunning, _inputController.walk);
 			_playerAnimator.SetBool(_animatorIsJumping, isJumping);
 		}
 
