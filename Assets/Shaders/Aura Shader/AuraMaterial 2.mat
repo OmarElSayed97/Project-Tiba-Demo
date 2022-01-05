@@ -49,7 +49,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_4d7c4d88f6254fb6b8ea0368f53ec4b4: -1.19
+    - Vector1_4d7c4d88f6254fb6b8ea0368f53ec4b4: -0.98
     - Vector1_4e61e15af89d47a599357b427495d5a6: 0.1
     - Vector1_59b4f1b704c246c49e8723be8477c368: 0.1
     - Vector1_5e97242187204382988914198a1e9768: 0.7
@@ -64,11 +64,11 @@ Material:
     - _QueueOffset: 0
     m_Colors:
     - Color_0c1e93d3172f4dfe97dcb0cfc094d603: {r: 0, g: 3.986841, b: 3.6986353, a: 0}
-    - Vector2_1bbd234402564b3292e39e05158dbd47: {r: 0.01, g: 0.01, b: 0, a: 0}
+    - Vector2_1bbd234402564b3292e39e05158dbd47: {r: 0.0002, g: 0.0002, b: 0, a: 0}
     - _AuraColor: {r: 0.13169736, g: 0.95766574, b: 0, a: 0}
     - _BorderColor: {r: 2, g: 0, b: 0.5882353, a: 0}
-    - _Scale: {r: 100, g: 100, b: 0, a: 0}
-    - _Scale_1: {r: 100, g: 100, b: 0, a: 0}
+    - _Scale: {r: 50, g: 50, b: 0, a: 0}
+    - _Scale_1: {r: 50, g: 50, b: 0, a: 0}
     - _TextureSpeed: {r: 0.01, g: -0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3040255770014044753
