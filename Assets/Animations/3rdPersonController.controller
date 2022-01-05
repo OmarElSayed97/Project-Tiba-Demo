@@ -148,9 +148,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
+  m_TransitionDuration: 0.056483686
   m_TransitionOffset: 0
-  m_ExitTime: 4.146662e-10
+  m_ExitTime: 0.95324576
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -166,7 +166,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: playerAltitude
-    m_EventTreshold: 0.2
+    m_EventTreshold: 0.35
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1429613653119361656}
   m_Solo: 0
