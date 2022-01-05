@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AuraMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 42fa066d69221aa4fab77906d0c79e33, type: 3}
+  m_Name: portalShaderGraph
+  m_Shader: {fileID: -6465566751694194690, guid: b1fe39c23c267764fa522a467bbe9083, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,12 +19,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_b10eff0e8ae947c6b5c6e2a427b42d67:
-        m_Texture: {fileID: 2800000, guid: a6697e5f988184e45a8ad852f6dc1f63, type: 3}
+    - Texture2D_73c2eacf70364876a2cd7f0eec6c196a:
+        m_Texture: {fileID: 2800000, guid: 4e1645eb52b42b84982d7d6706fd4dd4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _AuraTexture:
-        m_Texture: {fileID: 2800000, guid: 5b1289d1ab90ebb499c4eca0c80285e6, type: 3}
+    - Texture2D_b9075445713b4001b1e9f60d75657048:
+        m_Texture: {fileID: 2800000, guid: de3c3516f5bb17f47a72e5c31df97ff0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -41,16 +41,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_4d7c4d88f6254fb6b8ea0368f53ec4b4: -1.68
-    - _DistortionAmount: 0.07
+    - Vector1_0652a912c805458fbf44332a89650374: 12.93
+    - Vector1_40a6400345fd4f0185baa52c2ab8ee0e: 2.5
+    - Vector1_50aad7f528ba4adca1e7dd6758b5f0db: 100
+    - Vector1_647011482f1d46cdbd039dbef9a26549: 1
+    - Vector1_64de877dcc3b41a5aee471f560938b42: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - Vector2_1bbd234402564b3292e39e05158dbd47: {r: 0.01, g: 0.01, b: 0, a: 0}
-    - _AuraColor: {r: 0.013655695, g: 1.3109467, b: 0.013655695, a: 0}
-    - _TextureSpeed: {r: 0.01, g: -0.2, b: 0, a: 0}
+    - Color_e21a9fd8fcbc401e9b2736dc59e633c0: {r: 2.8179684, g: 0, b: 10.680627, a: 0}
+    - _PortalColor: {r: 0.08344241, g: 0.0052424553, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &3040255770014044753
+--- !u!114 &4353981966239478293
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
