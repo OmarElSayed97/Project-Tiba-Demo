@@ -16,6 +16,7 @@ namespace Controllers.Player
 		private int _animatorIsJumping;
 		private int _animatorIsCrouching;
 		private int _animatorPlayerAltitude;
+		private int _animatorVerticalVelocity;
 
 		private Vector2 _moveInput;
 		private Vector2 _animatorDirection;
@@ -83,6 +84,7 @@ namespace Controllers.Player
 			_animatorIsJumping = Animator.StringToHash("isJumping");
 			_animatorIsCrouching = Animator.StringToHash("isCrouching");
 			_animatorPlayerAltitude = Animator.StringToHash("playerAltitude");
+			_animatorVerticalVelocity = Animator.StringToHash("verticalVelocity");
 
 			_inputController = GetComponent<InputController>();
 			_controller = GetComponent<CharacterController>();
@@ -251,16 +253,17 @@ namespace Controllers.Player
 
 		private void UpdateAnimator()
 		{
+			var deltaTime = Time.deltaTime;
 			if (input2D)
 			{
-				_playerAnimator.SetFloat(_animatorY, Mathf.Abs(_animatorDirection.x), 0.1f, Time.deltaTime);
+				_playerAnimator.SetFloat(_animatorY, Mathf.Abs(_animatorDirection.x * (_inputController.run ? runModifier : 1)), 0.1f, deltaTime);
 			}
 			else
 			{
-				_playerAnimator.SetFloat(_animatorX, _animatorDirection.x, 0.1f, Time.deltaTime);
-				_playerAnimator.SetFloat(_animatorY, _animatorDirection.y, 0.1f, Time.deltaTime);
+				_playerAnimator.SetFloat(_animatorX, _animatorDirection.x, 0.1f, deltaTime);
+				_playerAnimator.SetFloat(_animatorY, _animatorDirection.y, 0.1f, deltaTime);
 			}
-
+			_playerAnimator.SetFloat(_animatorVerticalVelocity, _movementVelocity.y, 0.2f, deltaTime);
 			_playerAnimator.SetFloat(_animatorPlayerAltitude, playerAltitude);
 			_playerAnimator.SetBool(_animatorIsRunning, _inputController.run);
 			_playerAnimator.SetBool(_animatorIsJumping, isJumping);
