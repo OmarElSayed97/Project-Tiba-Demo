@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Falcon Jar
-    second: {fileID: 2100000, guid: 4736dd6f3eb52458081fecddb8e3a909, type: 2}
+    second: {fileID: 2100000, guid: 61c3fc90680bf426d8e559657383115b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Jar Inside
-    second: {fileID: 2100000, guid: 8ab07c74c8f82490d844579ca098db83, type: 2}
+    second: {fileID: 2100000, guid: 655457c222788403586a718aae7a4304, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +45,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 2.5
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -98,7 +98,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 2.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

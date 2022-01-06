@@ -12,13 +12,13 @@ namespace Controllers.Player
         private InputAction _moveAction;
         private InputAction _lookAction;
         private InputAction _fireAction;
-        private InputAction _runAction;
+        private InputAction _walkAction;
         private InputAction _jumpAction;
         private InputAction _abilityAction;
         private InputAction _abilityOneAction;
         private InputAction _abilityTwoAction;
 
-        public bool run;
+        public bool walk;
         public bool jump;
         public bool performAbility;
         public Vector2 Move { get; private set; }
@@ -31,7 +31,7 @@ namespace Controllers.Player
             base.OnAwakeEvent();
             _playerInput = GetComponent<PlayerInput>();
             _moveAction = _playerInput.actions["Move"];
-            _runAction = _playerInput.actions["Run"];
+            _walkAction = _playerInput.actions["Walk"];
             _jumpAction = _playerInput.actions["Jump"];
             _lookAction = _playerInput.actions["Look"];
             _abilityAction = _playerInput.actions["PerformAbility"];
@@ -41,8 +41,8 @@ namespace Controllers.Player
 
         private void OnEnable()
         {
-            _runAction.started += RunActionOnStarted;
-            _runAction.canceled += RunActionOnCanceled;
+            _walkAction.started += WalkActionOnStarted;
+            _walkAction.canceled += WalkActionOnCanceled;
             _jumpAction.started += JumpActionOnStarted;
             _jumpAction.canceled += JumpActionOnCanceled;
             _abilityAction.started += AbilityActionOnStarted;
@@ -53,8 +53,8 @@ namespace Controllers.Player
         public override void OnDisable()
         {
             base.OnDisable();
-            _runAction.started -= RunActionOnStarted;
-            _runAction.canceled -= RunActionOnCanceled;
+            _walkAction.started -= WalkActionOnStarted;
+            _walkAction.canceled -= WalkActionOnCanceled;
             _jumpAction.started -= JumpActionOnStarted;
             _jumpAction.canceled -= JumpActionOnCanceled;
             _abilityAction.started -= AbilityActionOnStarted;
@@ -63,14 +63,14 @@ namespace Controllers.Player
             _abilityTwoAction.performed -= AbilityTwoActionOnPerformed;
         }
         
-        private void RunActionOnStarted(InputAction.CallbackContext obj)
+        private void WalkActionOnStarted(InputAction.CallbackContext obj)
         {
-            run = true;
+            walk = true;
         }
         
-        private void RunActionOnCanceled(InputAction.CallbackContext obj)
+        private void WalkActionOnCanceled(InputAction.CallbackContext obj)
         {
-            run = false;
+            walk = false;
         }
         
         private void JumpActionOnStarted(InputAction.CallbackContext obj)

@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blocker
-    second: {fileID: 2100000, guid: 01ffc913ed8764f009da6188420682aa, type: 2}
+    second: {fileID: 2100000, guid: 2d1eb5a95481f4fcfad93cbbe9387cab, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blocker Inside
-    second: {fileID: 2100000, guid: dd3a669af39bf4ca684704656f0e7e81, type: 2}
+    second: {fileID: 2100000, guid: 0aeee7012d91e444a9cb0af8b4569b31, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +45,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 3
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -98,7 +98,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 3
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

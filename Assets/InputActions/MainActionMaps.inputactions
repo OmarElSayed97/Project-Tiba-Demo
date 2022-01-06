@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Run",
+                    "name": "Walk",
                     "type": "Button",
                     "id": "266dc099-beb6-4ffd-8485-c368e0cd5398",
                     "expectedControlType": "Button",
@@ -306,7 +306,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Run",
+                    "action": "Walk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -317,7 +317,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Run",
+                    "action": "Walk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
