@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7389559732687824320
+--- !u!114 &-115156315927039975
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,9 +20,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SelectedMaterial
+  m_Name: GateLight
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _EMISSION _ENVIRONMENTREFLECTIONS_OFF _RECEIVE_SHADOWS_OFF _SPECULARHIGHLIGHTS_OFF
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -33,14 +33,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_fcec1e603a4f4bac805c1c65cd627371:
-        m_Texture: {fileID: 2800000, guid: fe307fff084456a4f82aff18474b0b42, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_fcec1e603a4f4bac805c1c65cd627371_1:
-        m_Texture: {fileID: 2800000, guid: fe307fff084456a4f82aff18474b0b42, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -99,49 +91,35 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_4e61e15af89d47a599357b427495d5a6: 0.1
-    - Vector1_59b4f1b704c246c49e8723be8477c368: 0.1
-    - Vector1_5e97242187204382988914198a1e9768: 0.7
-    - Vector1_70c39c67dfda42a5a905a5dfe3112a38: 200
-    - Vector1_9766169124f046bc8438a5b68239050f: 0
-    - Vector1_c1a99f78655b4f7692b4d0114754cb33: 0.07
     - _AlphaClip: 0
     - _Blend: 0
-    - _BorderPower: 1
-    - _BorderSize: 2.95
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _Cutoff: 0.218
+    - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Distortion_Amount: 0
     - _DstBlend: 0
-    - _EnvironmentReflections: 0
-    - _GlossMapScale: 1
-    - _Glossiness: 0.5
-    - _GlossyReflections: 1
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
     - _Metallic: 0
-    - _Mode: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.02
-    - _QueueControl: 0
+    - _Parallax: 0.005
     - _QueueOffset: 0
-    - _ReceiveShadows: 0
+    - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_0c1e93d3172f4dfe97dcb0cfc094d603: {r: 1.725051, g: 3.073199, b: 2.967324, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 0.46666667}
-    - _BorderColor: {r: 2.670157, g: 2.670157, b: 2.670157, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 0.46666667}
-    - _EmissionColor: {r: 0, g: 0.8693229, b: 7.9066987, a: 1}
+    - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 12.996038, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

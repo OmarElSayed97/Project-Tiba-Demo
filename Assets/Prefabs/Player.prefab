@@ -374,6 +374,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farmer_2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4241717006046522752, guid: 14d67d46d72a47743abc0d6991ed9687, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7cc088108be2e0648bff1688513343c9, type: 2}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 14d67d46d72a47743abc0d6991ed9687, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 14d67d46d72a47743abc0d6991ed9687, type: 3}
