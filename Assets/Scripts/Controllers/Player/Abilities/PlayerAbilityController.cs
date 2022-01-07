@@ -40,6 +40,7 @@ namespace Controllers.Player.Abilities
 		private void Awake()
 		{
 			_inputController = GetComponent<InputController>();
+			Cursor.visible = false;
 		}
 
 		private void Start()
@@ -48,6 +49,7 @@ namespace Controllers.Player.Abilities
 			_cursorController = CursorController.Instance;
 			currentAbilityPerformerBase = null;
 			currentAbilityPoints = maxAbilityPoints;
+			Cursor.visible = false;
 		}
 
 		private void OnEnable()

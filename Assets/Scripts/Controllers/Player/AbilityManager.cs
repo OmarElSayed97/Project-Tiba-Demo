@@ -18,6 +18,7 @@ namespace Controllers.Player
         private void OnEnable()
         {
             InputController.Instance.OnAbilitySwitched += AbilitySwitchedHandler;
+           
         }
 
         public override void OnDisable()

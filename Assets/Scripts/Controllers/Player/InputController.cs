@@ -17,6 +17,7 @@ namespace Controllers.Player
         private InputAction _abilityAction;
         private InputAction _abilityOneAction;
         private InputAction _abilityTwoAction;
+        private InputAction _switchAbilityAction;
 
         public bool walk;
         public bool jump;
@@ -25,6 +26,8 @@ namespace Controllers.Player
         public Vector2 Look { get; private set; }
 
         public event Action<int> OnAbilitySwitched;
+
+        private int currSelectedAbility;
 
         protected override void OnAwakeEvent()
         {
@@ -37,6 +40,8 @@ namespace Controllers.Player
             _abilityAction = _playerInput.actions["PerformAbility"];
             _abilityOneAction = _playerInput.actions["Ability_One"];
             _abilityTwoAction = _playerInput.actions["Ability_Two"];
+            _switchAbilityAction = _playerInput.actions["SwitchAbility"];
+            currSelectedAbility = 0;
         }
 
         private void OnEnable()
@@ -49,7 +54,11 @@ namespace Controllers.Player
             _abilityAction.canceled += AbilityActionOnCanceled;
             _abilityOneAction.performed += AbilityOneActionOnPerformed;
             _abilityTwoAction.performed += AbilityTwoActionOnPerformed;
+            _switchAbilityAction.performed += SwitchAbilityOnPerformed;
         }
+
+       
+
         public override void OnDisable()
         {
             base.OnDisable();
@@ -61,6 +70,7 @@ namespace Controllers.Player
             _abilityAction.canceled -= AbilityActionOnCanceled;
             _abilityOneAction.performed -= AbilityOneActionOnPerformed;
             _abilityTwoAction.performed -= AbilityTwoActionOnPerformed;
+            _switchAbilityAction.performed -= SwitchAbilityOnPerformed;
         }
         
         private void WalkActionOnStarted(InputAction.CallbackContext obj)
@@ -98,7 +108,23 @@ namespace Controllers.Player
         {
             OnAbilitySwitched?.Invoke(1);
         }
-        
+
+
+        private void SwitchAbilityOnPerformed(InputAction.CallbackContext obj)
+        {
+           if(currSelectedAbility == 0)
+            {
+                OnAbilitySwitched?.Invoke(1);
+                currSelectedAbility = 1;
+            }
+               
+           else
+            {
+                OnAbilitySwitched?.Invoke(0);
+                currSelectedAbility = 0;
+            }
+                
+        }
 
         private void Update()
         {
