@@ -8155,11 +8155,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3333703796041332398, guid: 0f0bd3606224b984ba931c4d601776b3, type: 3}
       propertyPath: m_Pitch
-      value: 0.11
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3333703796041332398, guid: 0f0bd3606224b984ba931c4d601776b3, type: 3}
       propertyPath: m_Volume
-      value: 0.155
+      value: 0.225
       objectReference: {fileID: 0}
     - target: {fileID: 3333703796041332398, guid: 0f0bd3606224b984ba931c4d601776b3, type: 3}
       propertyPath: m_Enabled
