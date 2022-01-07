@@ -43,6 +43,7 @@ namespace Controllers.Player.Abilities
         {
             _abilityFixedUpdateLogic = ApplyGravity;
             base.AbilityStartedLogic();
+            AudioManager._instance.Play("Gravity");
         }
 
         protected override void AbilityCancelLogic()

@@ -64,10 +64,10 @@ Material:
     - _QueueOffset: 0
     m_Colors:
     - Color_0c1e93d3172f4dfe97dcb0cfc094d603: {r: 0, g: 3.986841, b: 3.6986353, a: 0}
-    - Vector2_1bbd234402564b3292e39e05158dbd47: {r: 0.0002, g: 0.0002, b: 0, a: 0}
-    - _AuraColor: {r: 0.13169736, g: 0.95766574, b: 0, a: 0}
+    - Vector2_1bbd234402564b3292e39e05158dbd47: {r: 0.00001, g: 0.00001, b: 0, a: 0}
+    - _AuraColor: {r: 4.252437, g: 0.71536785, b: 0, a: 0}
     - _BorderColor: {r: 2, g: 0, b: 0.5882353, a: 0}
-    - _Scale: {r: 50, g: 50, b: 0, a: 0}
+    - _Scale: {r: 20, g: 1, b: 0, a: 0}
     - _Scale_1: {r: 50, g: 50, b: 0, a: 0}
     - _TextureSpeed: {r: 0.01, g: -0.2, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -20,6 +20,7 @@ namespace Controllers.Enemy
         [SerializeField] private bool followState;
         [SerializeField] private LayerMask killMask;
         [SerializeField, Range(0f, 1f)] private float gravityFactor = 0.8f;
+        [SerializeField] GameObject destructedPrefab;
         private float _playerDistance;
         private CharacterController _controller;
 
@@ -135,6 +136,7 @@ namespace Controllers.Enemy
 
         private void KillEnemy()
         {
+            Instantiate(destructedPrefab, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
 

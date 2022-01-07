@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1850284371035773257}
+  - component: {fileID: 621404729943815912}
+  - component: {fileID: 5236303171543467098}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -32,6 +34,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &621404729943815912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850284371035773256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb59b3f0ad669940bb71ca6694e7484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: []
+--- !u!114 &5236303171543467098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850284371035773256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4f25d5ba563d040a9d582401e8a688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalAbilitySprites: []
+  gravityAbilitySprites: []
 --- !u!1 &1850284372165281527
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,3 +108,10 @@ MonoBehaviour:
   DontDestroyLoad: 0
   m_IsSingletonLogsEnabled: 0
   abilitiesConfig: {fileID: 11400000, guid: 17fa7ec05f854dc43be561adf2124d02, type: 2}
+  selectedAbility:
+    isTimeBased: 0
+    cost: 0
+    enabledTime: 0
+    abilityMask:
+      serializedVersion: 2
+      m_Bits: 0

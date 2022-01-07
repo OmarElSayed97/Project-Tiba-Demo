@@ -102,7 +102,8 @@ namespace Controllers.Player.Abilities
 					{
 						currentAbilityPerformerBase = (AbilityPerformerBase)_abilityPerformerComponent;
 						currentAbility = currentAbilityPerformerBase.Ability;
-						currentAbilityPerformerBase.SelectAbility(OnAbilitySelected);	
+						currentAbilityPerformerBase.SelectAbility(OnAbilitySelected);
+						AudioManager._instance.Play("Highlight");
 					}
 					
 				}

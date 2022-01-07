@@ -116,12 +116,14 @@ namespace Controllers.Player
             {
                 OnAbilitySwitched?.Invoke(1);
                 currSelectedAbility = 1;
+                UIManager._instance.SwitchAbility(1);
             }
                
            else
             {
                 OnAbilitySwitched?.Invoke(0);
                 currSelectedAbility = 0;
+                UIManager._instance.SwitchAbility(0);
             }
                 
         }
