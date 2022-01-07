@@ -1,24 +1,50 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Controllers.Player;
+using System;
+using UnityEngine.SceneManagement;
+using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
     Sprite[] portalAbilitySprites, gravityAbilitySprites;
     [SerializeField]
-    Image portalIcon, gravityIcon; 
-
+    Image portalIcon, gravityIcon;
+    [SerializeField]
+    public Image energySource;
+    string d1, d2, d3,d4;
+    [SerializeField]
+    Text dialogueBox;
+    int currDialogue;
     public static UIManager _instance;
-
+    [SerializeField]
+    GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel;
+    float finishingTime,minutes,seconds;
+    bool startCounting;
+    [SerializeField]
+    TextMeshProUGUI finishingTimeText;
     private void Awake()
     {
         _instance = this;
+        AssignText();
+        dialogueBox.text = d1;
     }
 
+    private void OnEnable()
+    {
+        InputController.Instance.OnNextDialogue += GetNextDialogue;
+    }
+
+    //private void OnDisable()
+    //{
+    //    if(UIManager._instance!=null)
+    //        InputController.Instance.OnNextDialogue -= GetNextDialogue;
+    //}
 
 
+    
     public void SwitchAbility(int abilityNumber)
     {
         if(abilityNumber == 1)
@@ -35,5 +61,76 @@ public class UIManager : MonoBehaviour
         AudioManager._instance.Play("Select");
     }
 
-   
+    void AssignText()
+    {
+         d1 = ArabicFixerTool.FixLine("الناس كلها في سوق المدينة  كانت مقتنعة إن ده يوم القيامة ");
+         d2 = ArabicFixerTool.FixLine("بس البنت اللي قابلتها كان كلامها غير كده .");
+         d3 = ArabicFixerTool.FixLine("أنا لازم أدخل المعبد وأكتشف اللي حصل جواه");
+        d4 = ArabicFixerTool.FixLine(" أكيد هلاقي أجوبة هناك");
+    }
+
+    private void Update()
+    {
+        if (startCounting)
+            finishingTime += Time.deltaTime;
+    }
+    private void GetNextDialogue()
+    {
+        if(currDialogue == 0)
+        {
+            dialogueBox.text = d2;
+            currDialogue++;
+        }
+        else if (currDialogue == 1)
+        {
+            dialogueBox.text = d3;
+            currDialogue++;
+        }
+        else if (currDialogue == 2)
+        {
+            dialogueBox.text = d4;
+            currDialogue++;
+        }
+        else if (currDialogue == 3)
+        {
+            InputController.Instance.gameStarted = true;
+            startCounting = true;
+            DialoguePanel.SetActive(false);
+            HUDPanel.SetActive(true);
+
+        }
+
+    }
+
+
+
+    public void GameOver()
+    {
+        Cursor.visible = true;
+        GameOverPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void EndGame()
+    {
+        Cursor.visible = true;
+        EndGamePanel.SetActive(true);
+        minutes = Mathf.FloorToInt(finishingTime / 60);
+        seconds = Mathf.FloorToInt(finishingTime % 60);
+        finishingTimeText.text = minutes + " mins & " + seconds + " seconds";
+        Time.timeScale = 0;
+    }
+
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(0);
+        Cursor.visible = false;
+        Time.timeScale = 1;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

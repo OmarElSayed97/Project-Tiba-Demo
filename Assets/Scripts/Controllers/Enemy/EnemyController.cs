@@ -144,5 +144,9 @@ namespace Controllers.Enemy
         {
             Gizmos.DrawRay(_ray);
         }
+
+
+
+
     }
 }

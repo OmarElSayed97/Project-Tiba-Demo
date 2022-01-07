@@ -22,10 +22,12 @@ namespace Controllers.Player
         public bool walk;
         public bool jump;
         public bool performAbility;
+        public bool gameStarted { get;  set; }
         public Vector2 Move { get; private set; }
         public Vector2 Look { get; private set; }
 
         public event Action<int> OnAbilitySwitched;
+        public event Action OnNextDialogue;
 
         private int currSelectedAbility;
 
@@ -75,38 +77,48 @@ namespace Controllers.Player
         
         private void WalkActionOnStarted(InputAction.CallbackContext obj)
         {
-            walk = true;
+            if(gameStarted)
+                walk = true;
         }
         
         private void WalkActionOnCanceled(InputAction.CallbackContext obj)
         {
-            walk = false;
+            if (gameStarted)
+                walk = false;
         }
         
         private void JumpActionOnStarted(InputAction.CallbackContext obj)
         {
-            jump = true;
+            if (gameStarted)
+                jump = true;
+            else
+                OnNextDialogue?.Invoke();
         }
         
         private void JumpActionOnCanceled(InputAction.CallbackContext obj)
         {
-            jump = false;
+            if (gameStarted)
+                jump = false;
         }
         private void AbilityActionOnStarted(InputAction.CallbackContext obj)
         {
-            performAbility = true;
+            if (gameStarted)
+                performAbility = true;
         }
         private void AbilityActionOnCanceled(InputAction.CallbackContext obj)
         {
-            performAbility = false;
+            if (gameStarted)
+                performAbility = false;
         }
         private void AbilityOneActionOnPerformed(InputAction.CallbackContext obj)
         {
-            OnAbilitySwitched?.Invoke(0);
+            if (gameStarted)
+                OnAbilitySwitched?.Invoke(0);
         }
         private void AbilityTwoActionOnPerformed(InputAction.CallbackContext obj)
         {
-            OnAbilitySwitched?.Invoke(1);
+            if (gameStarted)
+                OnAbilitySwitched?.Invoke(1);
         }
 
 
@@ -130,8 +142,12 @@ namespace Controllers.Player
 
         private void Update()
         {
-            Move = _moveAction.ReadValue<Vector2>();
-            Look = _lookAction.ReadValue<Vector2>();
+            if (gameStarted)
+            {
+                Move = _moveAction.ReadValue<Vector2>();
+                Look = _lookAction.ReadValue<Vector2>();
+            }
+            
         }
     }
 }
