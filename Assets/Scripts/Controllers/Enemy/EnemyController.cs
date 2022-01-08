@@ -70,9 +70,10 @@ namespace Controllers.Enemy
             _ray.direction = ((playerTransform.position + playerOffset) - position).normalized;
             if (Physics.Raycast(_ray, out _hit, detectionRadius, -1, QueryTriggerInteraction.Ignore) && _hit.collider.gameObject.CompareTag("Player"))
             {
+                _playerDistance = _hit.distance;
                 followState = true;
                 _currentState = FollowPlayer;
-                _playerDistance = _hit.distance;
+                
             }
             else
             {
@@ -125,6 +126,10 @@ namespace Controllers.Enemy
             if (_playerDistance > followMinDistance)
             {
                 _controller.Move(_movementDirection);
+            }
+            else
+            {
+                UIManager._instance.GameOver();
             }
             
         }

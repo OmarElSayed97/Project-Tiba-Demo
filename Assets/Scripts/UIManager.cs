@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     int currDialogue;
     public static UIManager _instance;
     [SerializeField]
-    GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel;
+    GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel,TutorialPanel;
     float finishingTime,minutes,seconds;
     bool startCounting;
     [SerializeField]
@@ -76,22 +76,27 @@ public class UIManager : MonoBehaviour
     }
     private void GetNextDialogue()
     {
-        if(currDialogue == 0)
+        if (currDialogue == 0)
+        {
+            TutorialPanel.SetActive(false);
+            currDialogue++;
+        }
+        else if(currDialogue == 1)
         {
             dialogueBox.text = d2;
             currDialogue++;
         }
-        else if (currDialogue == 1)
+        else if (currDialogue == 2)
         {
             dialogueBox.text = d3;
             currDialogue++;
         }
-        else if (currDialogue == 2)
+        else if (currDialogue == 3)
         {
             dialogueBox.text = d4;
             currDialogue++;
         }
-        else if (currDialogue == 3)
+        else if (currDialogue == 4)
         {
             InputController.Instance.gameStarted = true;
             startCounting = true;
