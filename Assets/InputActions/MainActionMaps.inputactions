@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "f27f2e65-24d3-4ef1-81ba-a2c860350ebe",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=5,y=5)",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -409,6 +409,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d76825bb-64d9-4767-8cc2-e82f208afec9",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PerformAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5961d3cd-2814-4f66-9cb5-76ffb7ca3f78",
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
@@ -499,6 +510,17 @@
                     "name": "",
                     "id": "81822034-cf48-4534-ba76-267b910a64cd",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc2d3e99-491f-46ad-b47f-9afaf2c05583",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
