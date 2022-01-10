@@ -8184,7 +8184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1327738630173977738, guid: 0f0bd3606224b984ba931c4d601776b3, type: 3}
       propertyPath: maxJumpHeight
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1327738630173977738, guid: 0f0bd3606224b984ba931c4d601776b3, type: 3}
       propertyPath: fallMultiplier
