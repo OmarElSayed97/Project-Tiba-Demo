@@ -56,6 +56,9 @@ namespace Controllers.Player
 		[SerializeField, Tooltip("The maximum time the player will spend in the air while jumping from and to the same level.")]
 		private float maxJumpTime = 1f;
 
+		[SerializeField, Tooltip("The value multiplied to the gravity value when the player starts falling.")]
+		private float fallMultiplier = 2f;
+
 		[SerializeField, Tooltip("Number of jumps the player can preform without waiting for the jump cooldown.")]
 		private int maxBounceJumpCount = 1;
 
@@ -70,6 +73,8 @@ namespace Controllers.Player
 		[SerializeField, ReadOnly] private float bounceJumpsCounter;
 		// [SerializeField, ReadOnly] private bool isJumpPressed = false;
 		[SerializeField, ReadOnly] private bool isJumping = false;
+
+		[SerializeField, ReadOnly] private bool isFalling = false;
 		// [SerializeField, ReadOnly] private bool hasJumped = false;
 		// [SerializeField, ReadOnly] private bool hasLanded = false;
 
@@ -115,11 +120,11 @@ namespace Controllers.Player
 		{
 			PlayerMovementAction();
 			PlayerAnimationAction();
+			ApplyGravityAction();
 		}
 
 		private void FixedUpdate()
 		{
-			ApplyGravityAction();
 			GroundCheck();
 		}
 
@@ -130,11 +135,17 @@ namespace Controllers.Player
 				//ignore vertical velocity on ground
 				_movementVelocity.y = -0.2f;
 				isJumping = false;
+				isFalling = false;
+				_inputController.jump = (_collisionFlags & CollisionFlags.Below) == 0;
 			}
 			else
 			{
+				isFalling = isJumping && (_movementVelocity.y <= 0 || !_inputController.jump);
+				
 				//Apply Gravity
-				_movementVelocity.y += gravity * Time.deltaTime;
+				var prevYVelocity = _movementVelocity.y;
+				var newYVelocity = (( (isFalling? fallMultiplier : 1 ) *  gravity * Time.deltaTime) + _movementVelocity.y);
+				_movementVelocity.y = (prevYVelocity + newYVelocity) * 0.5f;
 			}
 		}
 
@@ -196,48 +207,9 @@ namespace Controllers.Player
 			// }
 			if(_lookDirection != Vector3.zero)
 				transform.rotation = Quaternion.LookRotation(_lookDirection, Vector3.up);
-
-			if (_controller.isGrounded)
-			{
-				if (_inputController.jump && !isJumping && (jumpCoolDownTimer <= 0 || bounceJumpsCounter > 0))
-				{
-					// Debug.Log("Jump");
-					isJumping = true;
-					
-					//Reset the jump input
-					_inputController.jump = false;
-					
-					//Check if we jumped before the cool down was finished
-					if (jumpCoolDownTimer > 0)
-					{
-						//Then decrement the number of bounce jumps we have
-						bounceJumpsCounter--;
-					}
-				
-					jumpCoolDownTimer = jumpCoolDown;
-					_movementVelocity += ((_moveDirection * (1 - jumpUpFactor)) + (Vector3.up * jumpUpFactor)).normalized *
-					                     initialJumpingVelocity;
-				}
-				else
-				{
-					//Reset Jumping Flag
-					isJumping = false;
-				
-					//Updating the cooldown timer
-					jumpCoolDownTimer = jumpCoolDownTimer > 0 ? jumpCoolDownTimer - deltaTime: jumpCoolDownTimer;
-				
-					if (bounceJumpsCounter < maxBounceJumpCount)
-					{
-						//Reset Jump Counter
-						bounceJumpsCounter = jumpCoolDownTimer <= 0 ? maxBounceJumpCount : bounceJumpsCounter;
-					}
-				}
-			}
-			else
-			{
-				//Air Borne
-			}
-
+			
+			HandleJump();
+			
 			//Apply the movement
 			verticalVelocity = _movementVelocity.y;
 			_movementVelocity.y = 0;
@@ -253,6 +225,49 @@ namespace Controllers.Player
 			_movementVelocity.x = Mathf.Abs(_movementVelocity.x) < 0.05f ? 0 : _movementVelocity.x; 
 			_movementVelocity.y = verticalVelocity;
 			_collisionFlags = _controller.Move(_movementVelocity * Time.deltaTime);
+		}
+
+		private void HandleJump()
+		{
+			if (_controller.isGrounded)
+			{
+				if (_inputController.jump && !isJumping && (jumpCoolDownTimer <= 0 || bounceJumpsCounter > 0))
+				{
+					// Debug.Log("Jump");
+					isJumping = true;
+					
+					//Reset the jump input
+					// _inputController.jump = false;
+					
+					//Check if we jumped before the cool down was finished
+					if (jumpCoolDownTimer > 0)
+					{
+						//Then decrement the number of bounce jumps we have
+						bounceJumpsCounter--;
+					}
+				
+					jumpCoolDownTimer = jumpCoolDown;
+					_movementVelocity += Vector3.up * (initialJumpingVelocity * 0.5f);
+				}
+				else
+				{
+					//Reset Jumping Flag
+					isJumping = false;
+				
+					//Updating the cooldown timer
+					jumpCoolDownTimer = jumpCoolDownTimer > 0 ? jumpCoolDownTimer - Time.deltaTime: jumpCoolDownTimer;
+				
+					if (bounceJumpsCounter < maxBounceJumpCount)
+					{
+						//Reset Jump Counter
+						bounceJumpsCounter = jumpCoolDownTimer <= 0 ? maxBounceJumpCount : bounceJumpsCounter;
+					}
+				}
+			}
+			else
+			{
+				//Air Borne
+			}
 		}
 
 		private void UpdateAnimator()	
