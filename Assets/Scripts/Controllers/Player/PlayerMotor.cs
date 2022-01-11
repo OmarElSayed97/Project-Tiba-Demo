@@ -64,6 +64,9 @@ namespace Controllers.Player
 
 		[SerializeField, Tooltip("The amount of time the player must wait to perform another jump, if they run out of bounce jumps.")]
 		private float jumpCoolDown = 0.2f;
+		
+		[SerializeField, Tooltip("(Coyote Time) The amount of time in which the player can jump without after leaving the ground")]
+		private float hangTime = 0.2f;
 
 		[Space(10), Header("Debug")] [SerializeField, ReadOnly]
 		private float initialJumpingVelocity;
@@ -71,6 +74,7 @@ namespace Controllers.Player
 		[SerializeField, ReadOnly] private float playerAltitude;
 		[SerializeField, ReadOnly] private float jumpCoolDownTimer;
 		[SerializeField, ReadOnly] private float bounceJumpsCounter;
+		[SerializeField, ReadOnly] private float jumpHangTimer;
 		// [SerializeField, ReadOnly] private bool isJumpPressed = false;
 		[SerializeField, ReadOnly] private bool isJumping = false;
 
@@ -134,17 +138,25 @@ namespace Controllers.Player
 			{
 				//ignore vertical velocity on ground
 				_movementVelocity.y = -0.2f;
+				
+				//Resetting the hang Timer (Coyote Timer) to its original value when grounded
+				jumpHangTimer = hangTime;
 				isJumping = false;
 				isFalling = false;
 				_inputController.jump = (_collisionFlags & CollisionFlags.Below) == 0;
 			}
 			else
 			{
+				var deltaTime = Time.deltaTime;
+				//Decrement the handTimer (Coyote Timer) when airborne
+				jumpHangTimer -= deltaTime;
+				
+				//Checking if the player is started to fall or if the player released the jump button
 				isFalling = isJumping && (_movementVelocity.y <= 0 || !_inputController.jump);
 				
 				//Apply Gravity
 				var prevYVelocity = _movementVelocity.y;
-				var newYVelocity = (( (isFalling? fallMultiplier : 1 ) *  gravity * Time.deltaTime) + _movementVelocity.y);
+				var newYVelocity = (( (isFalling? fallMultiplier : 1 ) *  gravity * deltaTime) + _movementVelocity.y);
 				_movementVelocity.y = (prevYVelocity + newYVelocity) * 0.5f;
 			}
 		}
@@ -176,15 +188,8 @@ namespace Controllers.Player
 			//Update the movement direction
 			var cameraForward = _mainCameraTransform.forward;
 			var verticalVelocity = _movementVelocity.y;
-
-			// if (input2D)
-			// {
+			
 			_moveDirection = Vector3.right * _moveInput.x;
-			// }
-			// else
-			// {
-			// 	_moveDirection = transform.right * _moveInput.x + transform.forward * _moveInput.y;
-			// }
 
 			_moveDirection.y = 0;
 			_movementVelocity.y = verticalVelocity;
@@ -192,19 +197,12 @@ namespace Controllers.Player
 			_moveDirection.Normalize();
 
 			//Rotate the Player direction to movement Direction
-			// if (input2D)
-			// {
+
 			_lookDirection = Vector3
 				.Lerp(transform.forward, _moveInput.x * Vector3.right, deltaTime * rotationSpeed * 10)
 				.ProjectOntoPlane(Vector3.up)
 				.normalized;
-			// }
-			// else
-			// {
-			// 	_lookDirection = Vector3
-			// 		.Lerp(transform.forward, cameraForward, deltaTime * rotationSpeed * _moveDirection.magnitude)
-			// 		.ProjectOntoPlane(Vector3.up).normalized;
-			// }
+			
 			if(_lookDirection != Vector3.zero)
 				transform.rotation = Quaternion.LookRotation(_lookDirection, Vector3.up);
 			
@@ -229,14 +227,21 @@ namespace Controllers.Player
 
 		private void HandleJump()
 		{
-			if (_controller.isGrounded)
+			if (_controller.isGrounded || jumpHangTimer > 0)
 			{
 				if (_inputController.jump && !isJumping && (jumpCoolDownTimer <= 0 || bounceJumpsCounter > 0))
 				{
 					// Debug.Log("Jump");
 					isJumping = true;
 					
-					//Reset the jump input
+					//Set the hang Timer (Coyote Timer) to zero to prevent the player from double jumping
+					jumpHangTimer = 0;
+					
+					//DEBUGGING
+					if(!_controller.isGrounded)
+						Debug.Log($"Coyote JUMP!");
+					
+					// //Reset the jump input
 					// _inputController.jump = false;
 					
 					//Check if we jumped before the cool down was finished
@@ -273,15 +278,9 @@ namespace Controllers.Player
 		private void UpdateAnimator()	
 		{
 			var deltaTime = Time.deltaTime;
-			// if (input2D)
-			// {
+			
 			_playerAnimator.SetFloat(_animatorY, Mathf.Abs(_movementVelocity.x), 0.2f, deltaTime);
-			// }
-			// else
-			// {
-			// 	_playerAnimator.SetFloat(_animatorX, _animatorDirection.x, 0.1f, deltaTime);
-			// 	_playerAnimator.SetFloat(_animatorY, _animatorDirection.y, 0.1f, deltaTime);
-			// }
+
 			_playerAnimator.SetFloat(_animatorVerticalVelocity, _movementVelocity.y, 0.2f, deltaTime);
 			_playerAnimator.SetFloat(_animatorPlayerAltitude, playerAltitude);
 			_playerAnimator.SetBool(_animatorIsRunning, _inputController.walk);
