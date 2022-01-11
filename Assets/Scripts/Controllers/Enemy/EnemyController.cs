@@ -141,7 +141,8 @@ namespace Controllers.Enemy
 
         private void KillEnemy()
         {
-            Instantiate(destructedPrefab, transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(destructedPrefab, transform.position, Quaternion.identity);
+            Destroy(obj, 1);
             gameObject.SetActive(false);
         }
 

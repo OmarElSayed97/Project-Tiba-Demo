@@ -217,7 +217,13 @@ namespace Controllers.Player.Abilities
 
 			selectedAbility = newAbility;
 			abilityLayer = newAbility.AbilityMask;
+
+			if (selectedAbility.IsTimeBased)
+				_cursorController.cursorMaterial.SetColor("_EmissionColor", Color.green * 9f);
+			else
+				_cursorController.cursorMaterial.SetColor("_EmissionColor", Color.magenta * 9f);
 		}
+		
 
 		private void OnFirstPortalEnter()
 		{

@@ -26,10 +26,12 @@ namespace Controllers.Player
         public Vector2 Move { get; private set; }
         public Vector2 Look { get; private set; }
 
-        public event Action<int> OnAbilitySwitched;
-        public event Action OnNextDialogue;
+        public event Action<int> OnAbilitySwitched; 
+        public event Action OnNextDialogue; //Added By Omar
+        
 
-        private int currSelectedAbility;
+        [HideInInspector]
+        public int currSelectedAbility; //Added by Omar & To be adjusted
 
         protected override void OnAwakeEvent()
         {

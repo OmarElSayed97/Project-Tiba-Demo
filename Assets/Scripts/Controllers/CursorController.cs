@@ -8,6 +8,7 @@ namespace Controllers
 		private InputController _inputController;
 		[SerializeField] private float cursorSpeed = 0.05f;
 		[SerializeField] private Transform frustumParent;
+		[SerializeField] public Material cursorMaterial;
 
 		private Plane[] _planes;
 		
@@ -19,10 +20,13 @@ namespace Controllers
 		private Vector2 _upFrustumPlane;
 
 		public Vector3 CursorWorldPosition => transform.position;
+		
+		
 		protected override void OnAwakeEvent()
 		{
 			base.OnAwakeEvent();
 			_inputController = InputController.Instance;
+			
 		}
 
 		public override void Start()

@@ -130,8 +130,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.5, y: 1, z: 9}
+  m_Center: {x: 0.026142597, y: 0, z: 0}
 --- !u!114 &7255610501920978848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,8 @@ MonoBehaviour:
   otherPortal: {fileID: 7255610501920978848}
   selectionEffect: {fileID: 7958238122819753548}
   openedEffect: {fileID: 7958238120861977160}
-  _teleportedObjects: []
+  teleportedObjects: []
+  enteredObjects: []
 --- !u!1 &7958238122379739440
 GameObject:
   m_ObjectHideFlags: 0

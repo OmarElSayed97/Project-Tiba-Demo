@@ -15011,6 +15011,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24670714}
     - target: {fileID: 5236303171543467098, guid: 458396d0a2b60894e83a5e5789de71d1, type: 3}
+      propertyPath: timeText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236303171543467098, guid: 458396d0a2b60894e83a5e5789de71d1, type: 3}
       propertyPath: portalIcon
       value: 
       objectReference: {fileID: 1068676461}
@@ -16644,7 +16648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: share your speed run with us and dont forget to fill the survey
+  m_text: share your speed run with us
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21138,6 +21142,7 @@ MonoBehaviour:
   m_IsSingletonLogsEnabled: 0
   cursorSpeed: 0.0035
   frustumParent: {fileID: 203238062668853630}
+  cursorMaterial: {fileID: 2100000, guid: be19d45b53f1d104baca85c68a04fba4, type: 2}
 --- !u!1 &203238061441201356
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     public static UIManager _instance;
     [SerializeField]
     GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel,TutorialPanel;
-    float finishingTime,minutes,seconds;
+    float finishingTime,minutes,seconds,milliseconds;
     bool startCounting;
     [SerializeField]
     TextMeshProUGUI finishingTimeText;
@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
     void AssignText()
     {
          d1 = ArabicFixerTool.FixLine("الناس كلها في سوق المدينة  كانت مقتنعة إن ده يوم القيامة ");
-         d2 = ArabicFixerTool.FixLine("بس البنت اللي قابلتها كان كلامها غير كده .");
+         d2 = ArabicFixerTool.FixLine("بس البنت اللي قابلتها كان كلامها غير كده ");
          d3 = ArabicFixerTool.FixLine("أنا لازم أدخل المعبد وأكتشف اللي حصل جواه");
         d4 = ArabicFixerTool.FixLine(" أكيد هلاقي أجوبة هناك");
     }
@@ -72,7 +72,12 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         if (startCounting)
+        {
             finishingTime += Time.deltaTime;
+           
+        }
+            
+
     }
     private void GetNextDialogue()
     {
@@ -120,9 +125,12 @@ public class UIManager : MonoBehaviour
     {
         Cursor.visible = true;
         EndGamePanel.SetActive(true);
+       
         minutes = Mathf.FloorToInt(finishingTime / 60);
         seconds = Mathf.FloorToInt(finishingTime % 60);
-        finishingTimeText.text = minutes + " mins & " + seconds + " seconds";
+        milliseconds = finishingTime % 1;
+        string millisecondsString = milliseconds.ToString("f3");
+        finishingTimeText.text = minutes + " min, " + seconds + " seconds & " + millisecondsString.Trim('.','0') + " ms";
         Time.timeScale = 0;
     }
 
