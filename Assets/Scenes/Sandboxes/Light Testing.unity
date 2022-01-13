@@ -8969,7 +8969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c043ab5cb6f77489f9d408bdb8fbc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: "\u062A\u062D\u062A\u0645\u0633"
+  text: "\u062D\u0648\u0631"
   tashkeel: 1
   hinduNumbers: 1
 --- !u!114 &986910347
