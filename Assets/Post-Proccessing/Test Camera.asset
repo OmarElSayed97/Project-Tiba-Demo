@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
   m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   lift:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: -0.024183799}
@@ -104,13 +104,13 @@ MonoBehaviour:
   m_Name: Test Camera
   m_EditorClassIdentifier: 
   components:
+  - {fileID: -1302825132472656697}
   - {fileID: 2498155996934086932}
   - {fileID: -3051655641137541099}
   - {fileID: -3556962898573517538}
   - {fileID: 8135463170769573995}
   - {fileID: -552667491326627098}
   - {fileID: 338926207347823885}
-  - {fileID: -1302825132472656697}
 --- !u!114 &338926207347823885
 MonoBehaviour:
   m_ObjectHideFlags: 3
