@@ -18284,6 +18284,10 @@ PrefabInstance:
       propertyPath: dragInputFactor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1327738630173977738, guid: 0f0bd3606224b984ba931c4d601776b3, type: 3}
+      propertyPath: minSpeedThreshold
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f0bd3606224b984ba931c4d601776b3, type: 3}
 --- !u!1 &924105032

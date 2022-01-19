@@ -39,13 +39,16 @@ namespace Controllers.Player
 		[SerializeField] private float airDrag = 15f;
 		// [SerializeField] private bool input2D = false;
 		[SerializeField, Range(0f, 1f)] private float dragInputFactor = 0.5f;
+
+		[SerializeField, Tooltip("when the horizontal movement get below this threshold, it is clamped to zero.")]
+		private float minSpeedThreshold = 0.1f;
 		[SerializeField] private float maxSpeed = 5f;
 		[SerializeField] private float rotationSpeed = 200f;
 
 		// [Space(10), Header("Jumping")] [SerializeField]
 		// private float jumpSpeed = 10f;
 
-		[SerializeField, Range(0f, 1f)] private float jumpUpFactor = 0.7f;
+		// [SerializeField, Range(0f, 1f)] private float jumpUpFactor = 0.7f;
 		[SerializeField, Range(0f, 1f)] private float sneakModifier;
 		[SerializeField] private float gravity = -9.8f;
 		[SerializeField] private LayerMask groundLayerMask;
@@ -219,8 +222,11 @@ namespace Controllers.Player
 			                     ((1 - (_moveDirection.magnitude * dragInputFactor)) *
 			                      (_controller.isGrounded ? groundDrag : airDrag) * Time.deltaTime);
 
-			_movementVelocity = Vector3.ClampMagnitude(_movementVelocity, _inputController.walk ? maxSpeed * sneakModifier : maxSpeed);
-			_movementVelocity.x = Mathf.Abs(_movementVelocity.x) < 0.05f ? 0 : _movementVelocity.x; 
+			//Clamping Horizontal Speed to MaxSpeed
+			var currentMaxSpeed = _inputController.walk ? maxSpeed * sneakModifier : maxSpeed;
+			_movementVelocity.x = Mathf.Clamp(_movementVelocity.x,-currentMaxSpeed, currentMaxSpeed);
+			_movementVelocity.x = Mathf.Abs(_moveInput.x) == 0 && Mathf.Abs(_movementVelocity.x) < minSpeedThreshold ? 0 : _movementVelocity.x;
+			
 			_movementVelocity.y = verticalVelocity;
 			_collisionFlags = _controller.Move(_movementVelocity * Time.deltaTime);
 		}
