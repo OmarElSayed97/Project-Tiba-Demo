@@ -70,6 +70,9 @@ namespace Controllers.Player
 		
 		[SerializeField, Tooltip("(Coyote Time) The amount of time in which the player can jump without after leaving the ground")]
 		private float hangTime = 0.2f;
+		
+		[SerializeField, Tooltip("(Coyote Time) The amount of time in which the player can jump without after leaving the ground")]
+		private float jumpBuffer = 0.2f;
 
 		[Space(10), Header("Debug")] [SerializeField, ReadOnly]
 		private float initialJumpingVelocity;
@@ -78,12 +81,14 @@ namespace Controllers.Player
 		[SerializeField, ReadOnly] private float jumpCoolDownTimer;
 		[SerializeField, ReadOnly] private float bounceJumpsCounter;
 		[SerializeField, ReadOnly] private float jumpHangTimer;
+		[SerializeField, ReadOnly] private float jumpBufferTimer;
 		// [SerializeField, ReadOnly] private bool isJumpPressed = false;
 		[SerializeField, ReadOnly] private bool isJumping = false;
-
 		[SerializeField, ReadOnly] private bool isFalling = false;
-		// [SerializeField, ReadOnly] private bool hasJumped = false;
+		[SerializeField, ReadOnly] private bool jumpDownThisFrame = false;
+		[SerializeField, ReadOnly] private bool jumpUpThisFrame = false;
 		// [SerializeField, ReadOnly] private bool hasLanded = false;
+		private bool _lastJumpFlag = false;
 
 		private Action PlayerMovementAction;
 		private Action PlayerAnimationAction;
@@ -146,13 +151,13 @@ namespace Controllers.Player
 				jumpHangTimer = hangTime;
 				isJumping = false;
 				isFalling = false;
-				_inputController.jump = (_collisionFlags & CollisionFlags.Below) == 0;
 			}
 			else
 			{
 				var deltaTime = Time.deltaTime;
 				//Decrement the handTimer (Coyote Timer) when airborne
 				jumpHangTimer -= deltaTime;
+				jumpBufferTimer -= deltaTime;
 				
 				//Checking if the player is started to fall or if the player released the jump button
 				isFalling = isJumping && (_movementVelocity.y <= 0 || !_inputController.jump);
@@ -169,12 +174,11 @@ namespace Controllers.Player
 			var transform1 = transform;
 			_groundCheckRay.origin = transform1.position + groundCheckerOffset;
 			_groundCheckRay.direction = -transform1.up;
-			if (Physics.SphereCast(_groundCheckRay, _controller.radius, out _groundRaycastHit, 10f, groundLayerMask,queryTriggerInteraction: QueryTriggerInteraction.Ignore))
+			if (Physics.SphereCast(_groundCheckRay, _controller.radius, out _groundRaycastHit, 20f, groundLayerMask,queryTriggerInteraction: QueryTriggerInteraction.Ignore))
 			{
 				// Debug.Log($"Jumping: {playerAltitude}");
 				playerAltitude = transform.position.y - _groundRaycastHit.point.y;
 			}
-			
 		}
 
 		private void UpdateInput()
@@ -233,51 +237,68 @@ namespace Controllers.Player
 
 		private void HandleJump()
 		{
-			if (_controller.isGrounded || jumpHangTimer > 0)
+			//Update Jumping Flags
+			if (_lastJumpFlag != _inputController.jump)
 			{
-				if (_inputController.jump && !isJumping && (jumpCoolDownTimer <= 0 || bounceJumpsCounter > 0))
-				{
-					// Debug.Log("Jump");
-					isJumping = true;
-					
-					//Set the hang Timer (Coyote Timer) to zero to prevent the player from double jumping
-					jumpHangTimer = 0;
-					
-					//DEBUGGING
-					if(!_controller.isGrounded)
-						Debug.Log($"Coyote JUMP!");
-					
-					// //Reset the jump input
-					// _inputController.jump = false;
-					
-					//Check if we jumped before the cool down was finished
-					if (jumpCoolDownTimer > 0)
-					{
-						//Then decrement the number of bounce jumps we have
-						bounceJumpsCounter--;
-					}
-				
-					jumpCoolDownTimer = jumpCoolDown;
-					_movementVelocity += Vector3.up * (initialJumpingVelocity * 0.5f);
-				}
-				else
-				{
-					//Reset Jumping Flag
-					isJumping = false;
-				
-					//Updating the cooldown timer
-					jumpCoolDownTimer = jumpCoolDownTimer > 0 ? jumpCoolDownTimer - Time.deltaTime: jumpCoolDownTimer;
-				
-					if (bounceJumpsCounter < maxBounceJumpCount)
-					{
-						//Reset Jump Counter
-						bounceJumpsCounter = jumpCoolDownTimer <= 0 ? maxBounceJumpCount : bounceJumpsCounter;
-					}
-				}
+				jumpDownThisFrame = _inputController.jump;
+				jumpUpThisFrame = !_inputController.jump;
+				// Debug.Log($"Down: {jumpDownThisFrame} ---- Up: {jumpUpThisFrame}");
 			}
 			else
 			{
-				//Air Borne
+				jumpDownThisFrame = false;
+				jumpUpThisFrame = false;
+			}
+
+			_lastJumpFlag = _inputController.jump;
+			
+			//Update Jump Buffer
+			if (jumpDownThisFrame)
+			{
+				jumpBufferTimer = jumpBuffer;
+			}
+
+			if ((_controller.isGrounded && jumpBufferTimer > 0 ) || // Jump Buffer 
+			    (jumpHangTimer > 0 && jumpDownThisFrame) && // Coyote Time
+			    !isJumping && // Not Jumping 
+			    (jumpCoolDownTimer <= 0 || bounceJumpsCounter > 0)) // Bounce jumps
+			{
+				// Debug.Log("Jump");
+				isJumping = true;
+				
+				//DEBUGGING
+				if(!_controller.isGrounded)
+					Debug.Log($"Coyote JUMP!");
+				
+				if(!jumpDownThisFrame && jumpBufferTimer > 0)
+					Debug.Log($"Buffered JUMP!");
+					
+				//Set the hang Timer (Coyote Timer) and Jump Buffer Timer to zero to prevent the player from double jumping
+				jumpHangTimer = 0;
+				jumpBufferTimer = 0;
+					
+				
+				
+				//Check if we jumped before the cool down was finished
+				if (jumpCoolDownTimer > 0)
+				{
+					//Then decrement the number of bounce jumps we have
+					bounceJumpsCounter--;
+				}
+				
+				jumpCoolDownTimer = jumpCoolDown;
+				_movementVelocity += Vector3.up * (initialJumpingVelocity * 0.5f);
+			}
+			else
+			{
+				//Updating the cooldown timer
+				jumpCoolDownTimer = jumpCoolDownTimer > 0 ? jumpCoolDownTimer - Time.deltaTime: jumpCoolDownTimer;
+				
+				if (bounceJumpsCounter < maxBounceJumpCount)
+				{
+					//Reset Jump Counter
+					bounceJumpsCounter = jumpCoolDownTimer <= 0 ? maxBounceJumpCount : bounceJumpsCounter;
+				}
 			}
 		}
 

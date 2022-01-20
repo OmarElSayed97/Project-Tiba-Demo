@@ -18265,6 +18265,10 @@ PrefabInstance:
       value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1327738630173977738, guid: 0f0bd3606224b984ba931c4d601776b3, type: 3}
+      propertyPath: jumpBuffer
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327738630173977738, guid: 0f0bd3606224b984ba931c4d601776b3, type: 3}
       propertyPath: maxJumpTime
       value: 1.1
       objectReference: {fileID: 0}
