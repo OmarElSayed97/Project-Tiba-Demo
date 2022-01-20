@@ -19721,6 +19721,7 @@ MonoBehaviour:
   maxJumpHeight: 12
   maxJumpTime: 1.1
   fallMultiplier: 2.5
+  maxDownVerticalVelocity: 35
   maxBounceJumpCount: 1
   jumpCoolDown: 0
   hangTime: 0.2
