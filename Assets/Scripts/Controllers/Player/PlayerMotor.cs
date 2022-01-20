@@ -62,6 +62,9 @@ namespace Controllers.Player
 		[SerializeField, Tooltip("The value multiplied to the gravity value when the player starts falling.")]
 		private float fallMultiplier = 2f;
 
+		[SerializeField, Tooltip("Clamp the vertical velocity of the player to this value when falling.")]
+		private float maxDownVerticalVelocity = 20f;
+
 		[SerializeField, Tooltip("Number of jumps the player can preform without waiting for the jump cooldown.")]
 		private int maxBounceJumpCount = 1;
 
@@ -144,6 +147,9 @@ namespace Controllers.Player
 		{
 			if (_controller.isGrounded)
 			{
+				if(_movementVelocity.y < -1)
+					Debug.Log($"Max Down Velocity: {_movementVelocity.y}");
+				
 				//ignore vertical velocity on ground
 				_movementVelocity.y = -0.2f;
 				
@@ -165,7 +171,8 @@ namespace Controllers.Player
 				//Apply Gravity
 				var prevYVelocity = _movementVelocity.y;
 				var newYVelocity = (( (isFalling? fallMultiplier : 1 ) *  gravity * deltaTime) + _movementVelocity.y);
-				_movementVelocity.y = (prevYVelocity + newYVelocity) * 0.5f;
+				var finalYVelocity = (prevYVelocity + newYVelocity) * 0.5f;
+				_movementVelocity.y = finalYVelocity < -maxDownVerticalVelocity ? -maxDownVerticalVelocity : finalYVelocity;
 			}
 		}
 
