@@ -19893,13 +19893,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.8
-  m_Radius: 0.3
+  m_Height: 2.5
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.05
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Center: {x: 0, y: 1.32, z: 0}
 --- !u!82 &3333703796041332398
 AudioSource:
   m_ObjectHideFlags: 0
