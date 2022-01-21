@@ -7,18 +7,26 @@ namespace Controllers
 	{
 		private InputController _inputController;
 		[SerializeField] private float cursorSpeed = 0.05f;
+		[SerializeField] private float cursorRadius = 3.5f;
+		[SerializeField] private Vector3 cursorCircleCenterOffset = new Vector3(0,1,0);
 		[SerializeField] private Transform frustumParent;
 		[SerializeField] public Material cursorMaterial;
 
 		private Plane[] _planes;
 		
 		private Vector3 _newPosition;
+		private Vector3 _unitCirclePosition;
 
 		private Vector2 _leftFrustumPlane;
 		private Vector2 _rightFrustumPlane;
 		private Vector2 _downFrustumPlane;
 		private Vector2 _upFrustumPlane;
-
+		
+		private Transform _leftFrustumPlaneTransform;
+		private Transform _rightFrustumPlaneTransform;
+		private Transform _downFrustumPlaneTransform;
+		private Transform _upFrustumPlaneTransform;
+		
 		public Vector3 CursorWorldPosition => transform.position;
 		
 		
@@ -72,12 +80,27 @@ namespace Controllers
 			// {
 			// 	_lastPosition = transform.localPosition;
 			// }
+			_unitCirclePosition.x += _inputController.Look.x * cursorSpeed;
+			_unitCirclePosition.y += _inputController.Look.y * cursorSpeed;
+			_unitCirclePosition.z = 0;
+			
+			_unitCirclePosition.Normalize();
 
-			_newPosition = transform.localPosition;
-			_newPosition.x = Mathf.Clamp(_newPosition.x + (_inputController.Look.x * cursorSpeed), _leftFrustumPlane.x, _rightFrustumPlane.x);
-			_newPosition.y = Mathf.Clamp(_newPosition.y + (_inputController.Look.y * cursorSpeed), _downFrustumPlane.y, _upFrustumPlane.y);
+			_newPosition = _unitCirclePosition * cursorRadius;
+			
+			_newPosition = _inputController.transform.position + _newPosition + cursorCircleCenterOffset;
+			
+			// _newPosition.z = transform.position.z;
 
-			transform.localPosition = _newPosition;
+			
+
+			// _newPosition.x = Mathf.Clamp(_newPosition.x + (_inputController.Look.x * cursorSpeed), _leftFrustumPlane.x, _rightFrustumPlane.x);
+			// _newPosition.y = Mathf.Clamp(_newPosition.y + (_inputController.Look.y * cursorSpeed), _downFrustumPlane.y, _upFrustumPlane.y);
+			
+			_newPosition.x = Mathf.Clamp(_newPosition.x , _leftFrustumPlaneTransform.position.x, _rightFrustumPlaneTransform.position.x);
+			_newPosition.y = Mathf.Clamp(_newPosition.y , _downFrustumPlaneTransform.position.y, _upFrustumPlaneTransform.position.y);
+
+			transform.position = _newPosition;
 		
 			// if (!GeometryUtility.TestPlanesAABB(_planes, _objCollider.bounds))
 			// {
@@ -99,11 +122,18 @@ namespace Controllers
 				p.position = -planes[i].normal * planes[i].distance;
 				p.rotation = Quaternion.FromToRotation(Vector3.up, planes[i].normal);
 			}
+			
+			_leftFrustumPlaneTransform = frustumParent.GetChild(0);
+			_rightFrustumPlaneTransform = frustumParent.GetChild(1);
+			_downFrustumPlaneTransform = frustumParent.GetChild(2);
+			_upFrustumPlaneTransform = frustumParent.GetChild(3);
 
-			_leftFrustumPlane = frustumParent.GetChild(0).localPosition;
-			_rightFrustumPlane = frustumParent.GetChild(1).localPosition;
-			_downFrustumPlane = frustumParent.GetChild(2).localPosition;
-			_upFrustumPlane = frustumParent.GetChild(3).localPosition;
+			_leftFrustumPlane = _leftFrustumPlaneTransform.localPosition;
+			_rightFrustumPlane = _rightFrustumPlaneTransform.localPosition;
+			_downFrustumPlane = _downFrustumPlaneTransform.localPosition;
+			_upFrustumPlane = _upFrustumPlaneTransform.localPosition;
+
+			
 		}
 	}
 }
