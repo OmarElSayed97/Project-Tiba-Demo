@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "f27f2e65-24d3-4ef1-81ba-a2c860350ebe",
                     "expectedControlType": "Vector2",
-                    "processors": "ScaleVector2(x=5,y=5)",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -93,7 +93,7 @@
                     "id": "978bfe49-cc26-4a3d-ab7b-7d7a29327403",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "NormalizeVector2",
                     "groups": ";Gamepad",
                     "action": "Move",
                     "isComposite": false,
@@ -225,7 +225,7 @@
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "ScaleVector2(x=3.5,y=3.5)",
+                    "processors": "ScaleVector2(x=50,y=50)",
                     "groups": ";Gamepad",
                     "action": "Look",
                     "isComposite": false,
@@ -322,7 +322,7 @@
                 {
                     "name": "",
                     "id": "50e9cff9-8ace-41b3-860c-b3e7505078a0",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -355,7 +355,7 @@
                 {
                     "name": "",
                     "id": "00ad4e96-69b7-4472-a222-dd5b89fde01e",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -414,6 +414,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "PerformAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c2bd7af-6bce-453d-a744-333ffb200f3a",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "PerformAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -520,7 +531,7 @@
                 {
                     "name": "",
                     "id": "fc2d3e99-491f-46ad-b47f-9afaf2c05583",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

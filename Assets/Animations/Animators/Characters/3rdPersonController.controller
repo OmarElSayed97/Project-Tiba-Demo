@@ -94,17 +94,17 @@ BlendTree:
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 1378280651355986947, guid: ea9fac8713f44884eaf86c1030ab36c9, type: 3}
-    m_Threshold: -4
+    m_Threshold: -10
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 2
+    m_TimeScale: 0.3
     m_CycleOffset: 0
     m_DirectBlendParameter: x
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 1355145996145570886, guid: ea9fac8713f44884eaf86c1030ab36c9, type: 3}
-    m_Threshold: 0
+    m_Threshold: -5
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 1.5
+    m_TimeScale: 0.5
     m_CycleOffset: 0
     m_DirectBlendParameter: x
     m_Mirror: 0
@@ -112,22 +112,22 @@ BlendTree:
     m_Motion: {fileID: 542208019278821540, guid: ea9fac8713f44884eaf86c1030ab36c9, type: 3}
     m_Threshold: 2
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 1.5
+    m_TimeScale: 0.5
     m_CycleOffset: 0
     m_DirectBlendParameter: x
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 6603536640359597964, guid: ea9fac8713f44884eaf86c1030ab36c9, type: 3}
-    m_Threshold: 4
+    m_Threshold: 10
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 1.5
+    m_TimeScale: 0.3
     m_CycleOffset: 0
     m_DirectBlendParameter: x
     m_Mirror: 0
   m_BlendParameter: verticalVelocity
   m_BlendParameterY: x
-  m_MinThreshold: -4
-  m_MaxThreshold: 4
+  m_MinThreshold: -10
+  m_MaxThreshold: 10
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -389,7 +389,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MidAir
-  m_Speed: 0.1
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8082962480581661169}
