@@ -19858,7 +19858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAbilityPoints: 100
   maxActivationDistance: 25
-  abilityBeamRadius: 1
+  abilityBeamRadius: 1.5
   aimingCenter: {fileID: 1327738630450694607}
   currentAbilityPerformerBase: {fileID: 0}
   GFX: {fileID: 1327738628675898325}
