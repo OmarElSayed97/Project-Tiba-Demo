@@ -98,7 +98,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -153830957423991239, guid: be83d7105f18177439a491858fd1d5bf, type: 3}
 --- !u!1 &4675457685544837370
@@ -112,8 +112,7 @@ GameObject:
   - component: {fileID: 2769139054863137559}
   - component: {fileID: 4196111128096361355}
   - component: {fileID: 3928020392899834095}
-  - component: {fileID: 6411739145022617444}
-  - component: {fileID: 7700508959281795544}
+  - component: {fileID: 5966258752542290621}
   m_Layer: 0
   m_Name: Icosphere.004
   m_TagString: Untagged
@@ -186,23 +185,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &6411739145022617444
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4675457685544837370}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &7700508959281795544
+--- !u!114 &5966258752542290621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da8db136d970be48a9d88e80a323572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angularVelVector: {x: 0.1, y: 0.1, z: 0.3}
+  angularVelocity: {x: 1, y: 15, z: 1}
+  moveValue: {x: 0.01, y: 0.08, z: 0}
+  duration: 1
 --- !u!1 &5430317852052242529
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,8 +211,7 @@ GameObject:
   - component: {fileID: 8194514434873514795}
   - component: {fileID: 5719673179075270875}
   - component: {fileID: 8456071352663939893}
-  - component: {fileID: 6076380355860504356}
-  - component: {fileID: 4032374454883038429}
+  - component: {fileID: 2534277670485027785}
   m_Layer: 0
   m_Name: Icosphere.003
   m_TagString: Untagged
@@ -300,23 +284,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &6076380355860504356
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5430317852052242529}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &4032374454883038429
+--- !u!114 &2534277670485027785
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,7 +296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da8db136d970be48a9d88e80a323572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angularVelVector: {x: 0.1, y: 0.3, z: 0.1}
+  angularVelocity: {x: 1, y: 15, z: 1}
+  moveValue: {x: 0.01, y: 0.08, z: 0}
+  duration: 1
 --- !u!1 &7289949746412358176
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,8 +310,7 @@ GameObject:
   - component: {fileID: 7982128198455122384}
   - component: {fileID: 1399445606089688542}
   - component: {fileID: 8083972726285758124}
-  - component: {fileID: 5124961866422861950}
-  - component: {fileID: 6811079503154341702}
+  - component: {fileID: 7692632059711391884}
   m_Layer: 0
   m_Name: Icosphere.002
   m_TagString: Untagged
@@ -414,23 +383,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &5124961866422861950
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7289949746412358176}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &6811079503154341702
+--- !u!114 &7692632059711391884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -442,4 +395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da8db136d970be48a9d88e80a323572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angularVelVector: {x: 0.3, y: 0.1, z: 0.1}
+  angularVelocity: {x: 1, y: 15, z: 1}
+  moveValue: {x: 0.01, y: 0.08, z: 0}
+  duration: 1

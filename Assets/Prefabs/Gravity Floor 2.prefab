@@ -126,8 +126,7 @@ GameObject:
   - component: {fileID: 3528913669330112440}
   - component: {fileID: 6454789091716572052}
   - component: {fileID: 2744789318250050786}
-  - component: {fileID: 5826182915023012466}
-  - component: {fileID: 4284541875849412618}
+  - component: {fileID: 8110402607679628616}
   m_Layer: 0
   m_Name: Icosphere.002
   m_TagString: Untagged
@@ -200,23 +199,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &5826182915023012466
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2611894941795636023}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &4284541875849412618
+--- !u!114 &8110402607679628616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,7 +211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da8db136d970be48a9d88e80a323572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angularVelVector: {x: 0.3, y: 0.1, z: 0.1}
+  angularVelocity: {x: 1, y: 15, z: 1}
+  moveValue: {x: 0.01, y: 0.08, z: 0}
+  duration: 1
+  randomStart: 0
 --- !u!1 &3532420450870743023
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,8 +226,7 @@ GameObject:
   - component: {fileID: 3321523965485593515}
   - component: {fileID: 6324065045847227399}
   - component: {fileID: 5739485674097010683}
-  - component: {fileID: 8523943333607308166}
-  - component: {fileID: 3430192782450459934}
+  - component: {fileID: 4691979321904417809}
   m_Layer: 0
   m_Name: Icosphere.003
   m_TagString: Untagged
@@ -314,23 +299,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &8523943333607308166
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3532420450870743023}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &3430192782450459934
+--- !u!114 &4691979321904417809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,7 +311,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da8db136d970be48a9d88e80a323572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angularVelVector: {x: 0.1, y: 0.3, z: 0.1}
+  angularVelocity: {x: 1, y: 15, z: 1}
+  moveValue: {x: 0.01, y: 0.08, z: 0}
+  duration: 1
+  randomStart: 0
 --- !u!1 &4736919205392818228
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,8 +405,7 @@ GameObject:
   - component: {fileID: 2602792226116247893}
   - component: {fileID: 8884084038385223601}
   - component: {fileID: 4407784647318520369}
-  - component: {fileID: 3091925295239456143}
-  - component: {fileID: 9207261194698604613}
+  - component: {fileID: 1730570520871571925}
   m_Layer: 0
   m_Name: Icosphere.004
   m_TagString: Untagged
@@ -507,23 +478,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &3091925295239456143
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5368160675636555699}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &9207261194698604613
+--- !u!114 &1730570520871571925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -535,7 +490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da8db136d970be48a9d88e80a323572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angularVelVector: {x: 0.1, y: 0.1, z: 0.3}
+  angularVelocity: {x: 1, y: 15, z: 1}
+  moveValue: {x: 0.01, y: 0.08, z: 0}
+  duration: 1
+  randomStart: 0
 --- !u!1 &6643412122434057423
 GameObject:
   m_ObjectHideFlags: 0
