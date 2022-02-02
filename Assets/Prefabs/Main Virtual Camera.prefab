@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7194253545965703066}
   - component: {fileID: 7194253545965703065}
-  - component: {fileID: 7194253545965703067}
   m_Layer: 0
-  m_Name: CM 3rdPerson Normal 1
+  m_Name: Main Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,21 +71,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 7194253546993108480}
---- !u!114 &7194253545965703067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7194253545965703071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerIndex: -1
-  XYAxis: {fileID: -1635741339537617338, guid: 1411ffb704594164095b8b757566cd4b, type: 3}
-  ZAxis: {fileID: 0}
 --- !u!1 &7194253546993108487
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,8 +155,8 @@ MonoBehaviour:
   m_ZDamping: 0
   m_TargetMovementOnly: 0
   m_ScreenX: 0.14
-  m_ScreenY: 0.76
-  m_CameraDistance: 125
+  m_ScreenY: 0.742
+  m_CameraDistance: 200
   m_DeadZoneWidth: 0.1
   m_DeadZoneHeight: 2
   m_DeadZoneDepth: 0
