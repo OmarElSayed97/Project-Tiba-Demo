@@ -2,73 +2,7 @@ fileFormatVersion: 2
 guid: 6c9731ee51299c04fad9f757e90277bc
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 5312513297238412727
-    second: Cube.020|CameraAction
-  - first:
-      74: 6486450343521121224
-    second: Cube.020|CameraAction.002
-  - first:
-      74: 8204224520207790766
-    second: Cube.020|Cube.004Action.011
-  - first:
-      74: 584316801470044695
-    second: Cube.020|Cube.006Action
-  - first:
-      74: 8554120619846112927
-    second: Cube.020|Cube.007Action
-  - first:
-      74: -7422951981565934786
-    second: Cube.020|Cube.008Action
-  - first:
-      74: -7125231604093714639
-    second: Cube.020|Cube.009Action
-  - first:
-      74: 8793530445154210258
-    second: Cube.020|Cube.013Action.001
-  - first:
-      74: -3074067563320051540
-    second: Cube.020|Cube.013Action.002
-  - first:
-      74: 1051017451055369658
-    second: Cube.020|Cube.014Action.001
-  - first:
-      74: -6634927162895834951
-    second: Cube.020|Cube.014Action.003
-  - first:
-      74: 7118280294818112999
-    second: Cube.020|Cube.017Action
-  - first:
-      74: 7022174712592282066
-    second: Cube.020|Empty.001Action
-  - first:
-      74: -1328520152219362406
-    second: Cube.020|EmptyAction
-  - first:
-      74: -4134024625405757634
-    second: Cube.020|IcosphereAction.001
-  - first:
-      74: -5836857347595125067
-    second: Cube.020|IcosphereAction.002
-  - first:
-      74: 6456352613600942223
-    second: Cube.020|Pillar.010Action
-  - first:
-      74: 5391262052358124367
-    second: Cube.020|Pillar.011Action
-  - first:
-      74: 486996828793236695
-    second: Cube.020|Pillar.012Action
-  - first:
-      74: -7237772309030519501
-    second: Cube.020|Pillar.013Action
-  - first:
-      74: -8051041414664838559
-    second: Cube.020|Point.002Action
-  - first:
-      74: 5287116681539841510
-    second: Cube.020|Point.002Action.002
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -101,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -154,7 +88,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.02
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

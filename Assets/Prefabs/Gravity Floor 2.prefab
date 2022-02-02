@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da8db136d970be48a9d88e80a323572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angularVelocity: {x: 1, y: 15, z: 1}
-  moveValue: {x: 0.01, y: 0.08, z: 0}
+  angularVelocity: {x: 15, y: 1, z: 1}
+  moveValue: {x: 0, y: 0, z: 0}
   duration: 1
   randomStart: 0
 --- !u!1 &3532420450870743023
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularVelocity: {x: 1, y: 15, z: 1}
-  moveValue: {x: 0.01, y: 0.08, z: 0}
+  moveValue: {x: 0, y: 0, z: 0}
   duration: 1
   randomStart: 0
 --- !u!1 &4736919205392818228
@@ -490,8 +490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da8db136d970be48a9d88e80a323572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angularVelocity: {x: 1, y: 15, z: 1}
-  moveValue: {x: 0.01, y: 0.08, z: 0}
+  angularVelocity: {x: 1, y: 1, z: 15}
+  moveValue: {x: 0, y: 0, z: 0}
   duration: 1
   randomStart: 0
 --- !u!1 &6643412122434057423
