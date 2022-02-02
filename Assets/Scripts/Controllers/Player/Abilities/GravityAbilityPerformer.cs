@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 
 namespace Controllers.Player.Abilities
@@ -9,11 +10,13 @@ namespace Controllers.Player.Abilities
 
         private Rigidbody _rigidbody;
         [SerializeField] private GameObject selectionEffect;
+        [SerializeField] private CinemachineImpulseSource impulseSource;
         private Action _abilityFixedUpdateLogic;
         private readonly Vector3 _gravity = new Vector3(0,-10,0);
         private Vector3 _downVelocity;
         private Vector3 _downDeltaPosition;
         private RaycastHit _hit;
+        private bool _collisionDetected = false;
         
         protected void Awake()
         {
@@ -77,8 +80,19 @@ namespace Controllers.Player.Abilities
                 {
                     _downVelocity = Vector3.zero;
                     _downDeltaPosition.y = _hit.point.y + 0.05f;
+                    if (!_collisionDetected)
+                    {
+                        impulseSource.GenerateImpulse();    
+                        // Debug.Log("Impulse");
+                    }
+                    _collisionDetected = true;
                 }
             }
+            else
+            {
+                _collisionDetected = false;
+            }
+            
             if(_downDeltaPosition.y < 0)
                 _rigidbody.position += _downDeltaPosition;
         }
