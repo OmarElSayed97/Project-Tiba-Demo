@@ -159,7 +159,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 6
-    m_Time: 0.2
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []

@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768697117138009046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 0.09, z: 0.79888}
+  m_LocalPosition: {x: 0.06, y: 1.33, z: 0.79888}
   m_LocalScale: {x: 1.0622663, y: 1.0622663, z: 1.0622663}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -315,6 +315,38 @@ MonoBehaviour:
   moveValue: {x: 0, y: 0, z: 0}
   duration: 1
   randomStart: 0
+--- !u!1 &3898532765026384880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6816360365270604428}
+  m_Layer: 9
+  m_Name: VFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6816360365270604428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898532765026384880}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6795191271108426757}
+  m_Father: {fileID: 4736919205392818229}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4736919205392818228
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +358,7 @@ GameObject:
   - component: {fileID: 4736919205392818229}
   - component: {fileID: 4736919205392818231}
   - component: {fileID: 4736919205392818230}
+  - component: {fileID: 6165600171748230700}
   - component: {fileID: 4736919205392818184}
   m_Layer: 9
   m_Name: Gravity Floor 2
@@ -347,7 +380,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4029103634851608117}
-  - {fileID: 6795191271108426757}
+  - {fileID: 6816360365270604428}
   - {fileID: 4369730849456129304}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -381,6 +414,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.5215483, y: 1.9805574, z: 7}
   m_Center: {x: 0.06009531, y: 1.3773007, z: 1}
+--- !u!114 &6165600171748230700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4736919205392818228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 3
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.4
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0.1, y: -0.1, z: 0}
 --- !u!114 &4736919205392818184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionEffect: {fileID: 768697117138009046}
+  impulseSource: {fileID: 6165600171748230700}
 --- !u!1 &5368160675636555699
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +593,7 @@ GameObject:
   - component: {fileID: 3366095574808999662}
   - component: {fileID: 4030803612527035700}
   m_Layer: 9
-  m_Name: VFX
+  m_Name: Rock island_VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,16 +606,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6643412122434057423}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.69715935}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3199997, z: -0.69715935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3528913669330112440}
   - {fileID: 3321523965485593515}
   - {fileID: 2602792226116247893}
-  m_Father: {fileID: 4736919205392818229}
-  m_RootOrder: 1
+  m_Father: {fileID: 6816360365270604428}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3366095574808999662
 MeshFilter:
@@ -601,7 +688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4308971385514940918, guid: 10852ad8a020b614aa9ae0c674cc3c2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.3199997
       objectReference: {fileID: 0}
     - target: {fileID: 4308971385514940918, guid: 10852ad8a020b614aa9ae0c674cc3c2a, type: 3}
       propertyPath: m_LocalPosition.z
