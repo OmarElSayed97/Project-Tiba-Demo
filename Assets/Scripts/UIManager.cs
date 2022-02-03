@@ -116,9 +116,11 @@ public class UIManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (GameOverPanel.activeSelf)
+            return;
         Cursor.visible = true;
-        GameOverPanel.SetActive(true);
         Time.timeScale = 0;
+        GameOverPanel.SetActive(true);
     }
 
     public void EndGame()
@@ -137,9 +139,9 @@ public class UIManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(0);
         Cursor.visible = false;
         Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Quit()
