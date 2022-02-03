@@ -87,12 +87,12 @@ namespace Controllers.Enemy
             if (!_controller.isGrounded)
             {
                 _verticalVelocity += Physics.gravity * (gravityFactor * Time.fixedDeltaTime);
-                _flags = _controller.Move(_verticalVelocity * Time.fixedDeltaTime);
             }
             else
             {
                 _verticalVelocity.y = 0;
             }
+            _flags = _controller.Move(_verticalVelocity * Time.fixedDeltaTime);
         }
 
         private void OnFirstPortalEnter()
@@ -123,6 +123,10 @@ namespace Controllers.Enemy
         {
             _movementDirection = _ray.direction * (followSpeed * Time.deltaTime);
             _movementDirection.y = 0;
+            if(_ray.direction.x * transform.right.x > 0.5f)
+            {
+                transform.right = -_movementDirection;
+            }
             if (_playerDistance > followMinDistance)
             {
                 _controller.Move(_movementDirection);

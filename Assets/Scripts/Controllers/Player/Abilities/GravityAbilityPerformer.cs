@@ -1,5 +1,6 @@
 using System;
 using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Controllers.Player.Abilities
@@ -9,7 +10,11 @@ namespace Controllers.Player.Abilities
     {
 
         private Rigidbody _rigidbody;
+        [SerializeField] private LayerMask collisionMask;
         [SerializeField] private GameObject selectionEffect;
+        [SerializeField] private GameObject destroyedGFX;
+        [SerializeField] private GameObject gfx;
+        [SerializeField] private GameObject vfx;
         [SerializeField] private CinemachineImpulseSource impulseSource;
         private Action _abilityFixedUpdateLogic;
         private readonly Vector3 _gravity = new Vector3(0,-10,0);
@@ -17,6 +22,8 @@ namespace Controllers.Player.Abilities
         private Vector3 _downDeltaPosition;
         private RaycastHit _hit;
         private bool _collisionDetected = false;
+
+        private float _timer;
         
         protected void Awake()
         {
@@ -24,6 +31,7 @@ namespace Controllers.Player.Abilities
         }
         protected override void InitializeAbility()
         {
+            abilityCollider.enabled = true;
             ability = AbilityManager.Instance.AbilityConfig.Gravity;
             _downVelocity = Vector3.zero;
             _abilityFixedUpdateLogic = () => { };
@@ -73,19 +81,17 @@ namespace Controllers.Player.Abilities
             _downVelocity += _gravity * fixedDeltaTime;
             _downDeltaPosition = _downVelocity * fixedDeltaTime;
             var newYValue = _downDeltaPosition.y + _rigidbody.position.y;
-            if (_rigidbody.SweepTest(-transform.up, out _hit, 1.5f, QueryTriggerInteraction.Ignore))
+            if (_rigidbody.SweepTest(-transform.up, out _hit, 3f, QueryTriggerInteraction.Ignore))
             {
-                // Debug.Log($"{hit.distance}");
                 if (newYValue - _hit.point.y < 0.05f)
                 {
                     _downVelocity = Vector3.zero;
                     _downDeltaPosition.y = _hit.point.y + 0.05f;
                     if (!_collisionDetected)
                     {
-                        impulseSource.GenerateImpulse();    
-                        // Debug.Log("Impulse");
+                        DestroyGravityObject();
+                        _collisionDetected = true;
                     }
-                    _collisionDetected = true;
                 }
             }
             else
@@ -95,6 +101,20 @@ namespace Controllers.Player.Abilities
             
             if(_downDeltaPosition.y < 0)
                 _rigidbody.position += _downDeltaPosition;
+        }
+
+        private void DestroyGravityObject()
+        {
+            abilityCollider.enabled = false;
+            CancelAbility();
+            impulseSource.GenerateImpulse();
+            destroyedGFX.SetActive(true);
+            selectionEffect.SetActive(false);
+            vfx.SetActive(false);
+            gfx.SetActive(false);
+            _timer = 0;
+            DOTween.To(() => _timer, x => _timer = x, 1, 5f)
+                .OnComplete(() => destroyedGFX.SetActive(false));
         }
     }
 }
