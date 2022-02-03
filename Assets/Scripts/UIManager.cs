@@ -6,6 +6,7 @@ using Controllers.Player;
 using System;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Enums;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
@@ -16,9 +17,10 @@ public class UIManager : MonoBehaviour
     public Image energySource;
     string d1, d2, d3,d4;
     [SerializeField]
-    Text dialogueBox;
+    TextMeshProUGUI dialogueBox;
     int currDialogue;
     public static UIManager _instance;
+    [HideInInspector]
     [SerializeField]
     GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel,TutorialPanel;
     float finishingTime,minutes,seconds,milliseconds;
