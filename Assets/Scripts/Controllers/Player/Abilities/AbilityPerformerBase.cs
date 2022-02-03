@@ -8,6 +8,7 @@ namespace Controllers.Player.Abilities
 		protected Ability ability;
 		protected bool isAbilityStarted;
 		protected bool isAbilitySelected;
+		protected Collider abilityCollider;
 		public Ability Ability => ability;
 
 		public bool IsAbilityStarted => isAbilityStarted;
@@ -28,6 +29,7 @@ namespace Controllers.Player.Abilities
 
 		protected virtual void Start()
 		{
+			abilityCollider = GetComponent<Collider>();
 			InitializeAbility();
 		}
 
