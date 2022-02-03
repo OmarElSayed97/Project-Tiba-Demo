@@ -1053,6 +1053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7958238121448306762, guid: cb2560109ad6129489b6f21ce4393eb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7958238122819753547, guid: cb2560109ad6129489b6f21ce4393eb9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7574027
@@ -4381,6 +4385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7958238121448306762, guid: cb2560109ad6129489b6f21ce4393eb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7958238122819753547, guid: cb2560109ad6129489b6f21ce4393eb9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7574027
@@ -7540,7 +7548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &834512028
 Transform:
   m_ObjectHideFlags: 0
@@ -9468,7 +9476,6 @@ GameObject:
   - component: {fileID: 986910345}
   - component: {fileID: 986910348}
   - component: {fileID: 986910347}
-  - component: {fileID: 986910346}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -9496,18 +9503,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.14526367, y: 5.145447}
   m_SizeDelta: {x: 247.0532, y: 83.89}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &986910346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986910344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72c043ab5cb6f77489f9d408bdb8fbc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &986910347
 MonoBehaviour:
   m_ObjectHideFlags: 0

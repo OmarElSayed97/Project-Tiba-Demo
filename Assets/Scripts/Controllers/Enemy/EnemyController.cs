@@ -63,6 +63,11 @@ namespace Controllers.Enemy
             DetectPlayer();
         }
 
+        private void OnDisable()
+        {
+            GFX.DOKill();
+        }
+
         private void DetectPlayer()
         {
             var position = transform.position;
