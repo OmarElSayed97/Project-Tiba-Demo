@@ -169,6 +169,11 @@ public class UIManager : Singleton<UIManager>
 		var millisecondsString = milliseconds.ToString("f3");
 		finishingTimeText.text = minutes + " min, " + seconds + " seconds & " + millisecondsString.Trim('.', '0') + " ms";
 	}
+	
+	public void ResumeGame()
+	{
+		GameManager.Instance.ResumeGame();
+	}
 
 	public void RestartLevel()
 	{
