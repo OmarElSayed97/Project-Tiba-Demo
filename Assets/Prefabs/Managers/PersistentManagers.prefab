@@ -110,7 +110,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: Highlights
+  - name: Highlight
     clip: {fileID: 8300000, guid: e252cda8674847641a59257e8e025ce2, type: 3}
     volume: 0.1
     pitch: 0.3
