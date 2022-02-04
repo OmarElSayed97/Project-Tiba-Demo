@@ -101,11 +101,13 @@ namespace Controllers.Player
         private void OnLevelResumed()
         {
             _playerInput.SwitchCurrentActionMap("Player");
+            Debug.Log("Input Map Switched to: Player");
         }
 
         private void OnLevelPaused()
         {
             _playerInput.SwitchCurrentActionMap("UI");
+            Debug.Log("Input Map Switched to: UI");
         }
 
         private void WalkActionOnStarted(InputAction.CallbackContext obj)

@@ -1,4 +1,6 @@
+using System;
 using Controllers.Player;
+using Managers;
 using UnityEngine;
 
 namespace Controllers
@@ -26,6 +28,8 @@ namespace Controllers
 		private Transform _rightFrustumPlaneTransform;
 		private Transform _downFrustumPlaneTransform;
 		private Transform _upFrustumPlaneTransform;
+
+		private Action _cursorAction;
 		
 		public Vector3 CursorWorldPosition => transform.position;
 		
@@ -33,9 +37,31 @@ namespace Controllers
 		protected override void OnAwakeEvent()
 		{
 			base.OnAwakeEvent();
+			StopCursor();
 			_inputController = InputController.Instance;
 			
 		}
+
+		private void OnEnable()
+		{
+			GameManager.LevelStarted += StartCursor;
+			GameManager.GameResumed += StartCursor;
+			GameManager.GamePaused += StopCursor;
+			GameManager.LevelFailed += StopCursor;
+			GameManager.LevelCompleted += StopCursor;
+			
+		}
+		
+		private void StartCursor()
+		{
+			_cursorAction = UpdateCursor;
+		}
+		
+		private void StopCursor()
+		{
+			_cursorAction = () => { };
+		}
+
 
 		public override void Start()
 		{
@@ -44,6 +70,11 @@ namespace Controllers
 		}
 
 		private void Update()
+		{
+			_cursorAction();
+		}
+
+		private void UpdateCursor()
 		{
 			// _planes = GeometryUtility.CalculateFrustumPlanes(_cam);
 			// // Debug.Log(inputController.Look);
@@ -106,7 +137,6 @@ namespace Controllers
 			// {
 			// 	transform.localPosition = _lastPosition;	
 			// }
-		
 		}
 
 		private void CalculatePlanes()
@@ -132,8 +162,6 @@ namespace Controllers
 			_rightFrustumPlane = _rightFrustumPlaneTransform.localPosition;
 			_downFrustumPlane = _downFrustumPlaneTransform.localPosition;
 			_upFrustumPlane = _upFrustumPlaneTransform.localPosition;
-
-			
 		}
 	}
 }

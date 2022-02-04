@@ -42,6 +42,7 @@ namespace Controllers.Player
             _currentSwitchedAbilityIndex = abilityIndex;
             // Debug.Log($"Ability Invoked {abilityIndex} {selectedAbility}");
             OnAbilitySwitched?.Invoke(selectedAbility);   
+            AudioManager.Instance.Play("Select");
         }
 
     }            

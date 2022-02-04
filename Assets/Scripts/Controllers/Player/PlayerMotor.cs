@@ -148,7 +148,7 @@ namespace Controllers.Player
 			if (_controller.isGrounded)
 			{
 				if(_movementVelocity.y < -1)
-					Debug.Log($"Max Down Velocity: {_movementVelocity.y}");
+					// Debug.Log($"Max Down Velocity: {_movementVelocity.y}");
 				
 				//ignore vertical velocity on ground
 				_movementVelocity.y = -0.2f;

@@ -22,6 +22,7 @@ public class UIManager : Singleton<UIManager>
 
 	protected override void OnAwakeEvent()
 	{
+		base.OnAwakeEvent();
 		AssignText();
 		dialogueBox.text = _dialogue[0];
 		OnLevelReset();
@@ -132,8 +133,11 @@ public class UIManager : Singleton<UIManager>
 	{
 		DialoguePanel.SetActive(false);
 		TutorialPanel.SetActive(false);
+		GameOverPanel.SetActive(false);
+		pauseMenuPanel.SetActive(false);
 		EndGamePanel.SetActive(false);
 		HUDPanel.SetActive(false);
+		energySource.fillAmount = 1;
 	}
 	
 	private void OnLevelLoaded()
