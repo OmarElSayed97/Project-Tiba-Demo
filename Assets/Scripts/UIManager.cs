@@ -15,7 +15,7 @@ public class UIManager : Singleton<UIManager>
 	private List<string> _dialogue;
 	private int _currDialogue;
 	
-	[HideInInspector] [SerializeField] GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel, TutorialPanel;
+	[SerializeField] GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel, TutorialPanel, pauseMenuPanel;
 	float finishingTime, minutes, seconds, milliseconds;
 
 	[SerializeField] TextMeshProUGUI finishingTimeText;
@@ -37,6 +37,8 @@ public class UIManager : Singleton<UIManager>
 		GameManager.LevelStarted += OnLevelStarted;
 		GameManager.LevelCompleted += OnLevelCompleted;
 		GameManager.LevelReset += OnLevelReset;
+		GameManager.GamePaused += OnGamePaused;
+		GameManager.GameResumed += OnGameResumed;
 	}
 	
 	public override void OnDisable()
@@ -55,6 +57,8 @@ public class UIManager : Singleton<UIManager>
 			GameManager.LevelFailed -= OnLevelFailed;
 			GameManager.LevelCompleted -= OnLevelCompleted;
 			GameManager.LevelReset -= OnLevelReset;
+			GameManager.GamePaused -= OnGamePaused;
+			GameManager.GameResumed -= OnGameResumed;
 		}
 	}
 
@@ -112,6 +116,17 @@ public class UIManager : Singleton<UIManager>
 		}
 		
 	}
+	
+	private void OnGamePaused()
+	{
+		pauseMenuPanel.SetActive(true);
+	}
+
+	private void OnGameResumed()
+	{
+		pauseMenuPanel.SetActive(false);
+	}
+
 
 	private void OnLevelReset()
 	{
