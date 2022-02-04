@@ -24,10 +24,7 @@ public class UIManager : Singleton<UIManager>
 	{
 		AssignText();
 		dialogueBox.text = _dialogue[0];
-		DialoguePanel.SetActive(false);
-		TutorialPanel.SetActive(false);
-		EndGamePanel.SetActive(false);
-		HUDPanel.SetActive(false);
+		OnLevelReset();
 	}
 
 	private void OnEnable()
@@ -38,6 +35,7 @@ public class UIManager : Singleton<UIManager>
 		GameManager.LevelFailed += OnLevelFailed;
 		GameManager.LevelStarted += OnLevelStarted;
 		GameManager.LevelCompleted += OnLevelCompleted;
+		GameManager.LevelReset += OnLevelReset;
 	}
 	
 	public override void OnDisable()
@@ -55,6 +53,7 @@ public class UIManager : Singleton<UIManager>
 			GameManager.LevelStarted -= OnLevelStarted;
 			GameManager.LevelFailed -= OnLevelFailed;
 			GameManager.LevelCompleted -= OnLevelCompleted;
+			GameManager.LevelReset -= OnLevelReset;
 		}
 	}
 
@@ -111,6 +110,14 @@ public class UIManager : Singleton<UIManager>
 			GameManager.Instance.StartLevel();
 		}
 		
+	}
+
+	private void OnLevelReset()
+	{
+		DialoguePanel.SetActive(false);
+		TutorialPanel.SetActive(false);
+		EndGamePanel.SetActive(false);
+		HUDPanel.SetActive(false);
 	}
 	
 	private void OnLevelLoaded()

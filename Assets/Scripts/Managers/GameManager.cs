@@ -44,6 +44,11 @@ namespace Managers
 			base.OnAwakeEvent();
 			GameState = eGameState.Initialization;
 			InitializeScene();
+		}
+
+		public override void Start()
+		{
+			base.Start();
 			LoadLevel();
 		}
 
