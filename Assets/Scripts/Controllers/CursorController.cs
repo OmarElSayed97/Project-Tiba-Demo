@@ -128,9 +128,11 @@ namespace Controllers
 			// _newPosition.x = Mathf.Clamp(_newPosition.x + (_inputController.Look.x * cursorSpeed), _leftFrustumPlane.x, _rightFrustumPlane.x);
 			// _newPosition.y = Mathf.Clamp(_newPosition.y + (_inputController.Look.y * cursorSpeed), _downFrustumPlane.y, _upFrustumPlane.y);
 			
-			_newPosition.x = Mathf.Clamp(_newPosition.x , _leftFrustumPlaneTransform.position.x, _rightFrustumPlaneTransform.position.x);
-			_newPosition.y = Mathf.Clamp(_newPosition.y , _downFrustumPlaneTransform.position.y, _upFrustumPlaneTransform.position.y);
-
+			
+			/////-------------------- ScreenClamping Start -------------------------
+			// _newPosition.x = Mathf.Clamp(_newPosition.x , _leftFrustumPlaneTransform.position.x, _rightFrustumPlaneTransform.position.x);
+			// _newPosition.y = Mathf.Clamp(_newPosition.y , _downFrustumPlaneTransform.position.y, _upFrustumPlaneTransform.position.y);
+			/////-------------------- ScreenClamping End ---------------------------
 			transform.position = _newPosition;
 		
 			// if (!GeometryUtility.TestPlanesAABB(_planes, _objCollider.bounds))
