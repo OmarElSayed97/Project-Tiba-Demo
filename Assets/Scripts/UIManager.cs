@@ -15,7 +15,7 @@ public class UIManager : Singleton<UIManager>
 	private List<string> _dialogue;
 	private int _currDialogue;
 	
-	[HideInInspector] [SerializeField] GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel, TutorialPanel;
+	[SerializeField] GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel, TutorialPanel, pauseMenuPanel;
 	float finishingTime, minutes, seconds, milliseconds;
 
 	[SerializeField] TextMeshProUGUI finishingTimeText;
@@ -36,8 +36,11 @@ public class UIManager : Singleton<UIManager>
 		GameManager.LevelStarted += OnLevelStarted;
 		GameManager.LevelCompleted += OnLevelCompleted;
 		GameManager.LevelReset += OnLevelReset;
+		GameManager.GamePaused += OnGamePaused;
+		GameManager.GameResumed += OnGameResumed;
 	}
-	
+
+
 	public override void OnDisable()
 	{
 		base.OnDisable();
@@ -54,6 +57,8 @@ public class UIManager : Singleton<UIManager>
 			GameManager.LevelFailed -= OnLevelFailed;
 			GameManager.LevelCompleted -= OnLevelCompleted;
 			GameManager.LevelReset -= OnLevelReset;
+			GameManager.GamePaused -= OnGamePaused;
+			GameManager.GameResumed -= OnGameResumed;
 		}
 	}
 
@@ -111,6 +116,17 @@ public class UIManager : Singleton<UIManager>
 		}
 		
 	}
+	
+	private void OnGamePaused()
+	{
+		pauseMenuPanel.SetActive(true);
+	}
+
+	private void OnGameResumed()
+	{
+		pauseMenuPanel.SetActive(false);
+	}
+
 
 	private void OnLevelReset()
 	{
@@ -149,6 +165,11 @@ public class UIManager : Singleton<UIManager>
 		milliseconds = finishingTime % 1;
 		var millisecondsString = milliseconds.ToString("f3");
 		finishingTimeText.text = minutes + " min, " + seconds + " seconds & " + millisecondsString.Trim('.', '0') + " ms";
+	}
+
+	public void ResumeGame()
+	{
+		GameManager.Instance.ResumeGame();
 	}
 
 	public void RestartLevel()
