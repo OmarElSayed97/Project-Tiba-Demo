@@ -167,7 +167,7 @@ public class UIManager : Singleton<UIManager>
 		seconds = Mathf.FloorToInt(finishingTime % 60);
 		milliseconds = finishingTime % 1;
 		var millisecondsString = milliseconds.ToString("f3");
-		finishingTimeText.text = minutes + " min, " + seconds + " seconds & " + millisecondsString.Trim('.', '0') + " ms";
+		finishingTimeText.text = ArabicSupport.Fix($"{minutes}:{seconds}:{millisecondsString.Trim('.', '0')}");
 	}
 	
 	public void ResumeGame()
