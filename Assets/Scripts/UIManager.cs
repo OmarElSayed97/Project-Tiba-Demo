@@ -15,7 +15,7 @@ public class UIManager : Singleton<UIManager>
 	private List<string> _dialogue;
 	private int _currDialogue;
 	
-	[SerializeField] GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel, TutorialPanel, pauseMenuPanel;
+	[HideInInspector] [SerializeField] GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel, TutorialPanel;
 	float finishingTime, minutes, seconds, milliseconds;
 
 	[SerializeField] TextMeshProUGUI finishingTimeText;
@@ -36,11 +36,8 @@ public class UIManager : Singleton<UIManager>
 		GameManager.LevelStarted += OnLevelStarted;
 		GameManager.LevelCompleted += OnLevelCompleted;
 		GameManager.LevelReset += OnLevelReset;
-		GameManager.GamePaused += OnGamePaused;
-		GameManager.GameResumed += OnGameResumed;
 	}
-
-
+	
 	public override void OnDisable()
 	{
 		base.OnDisable();
@@ -57,8 +54,6 @@ public class UIManager : Singleton<UIManager>
 			GameManager.LevelFailed -= OnLevelFailed;
 			GameManager.LevelCompleted -= OnLevelCompleted;
 			GameManager.LevelReset -= OnLevelReset;
-			GameManager.GamePaused -= OnGamePaused;
-			GameManager.GameResumed -= OnGameResumed;
 		}
 	}
 
@@ -87,8 +82,8 @@ public class UIManager : Singleton<UIManager>
 		// d4 = ArabicFixerTool.FixLine(" أكيد هلاقي أجوبة هناك");
 		_dialogue = new List<string>
 		{
-			"الناس كلها في سوق المدينة كانت مقتنعةإن ده يوم القيامة",
-			"بس البنت اللي قابلتها كان كلامهاغير كده",
+			"الناس كلها في سوق المدينة كانت مقتنعة إن ده يوم القيامة",
+			"بس البنت اللي قابلتها كان كلامها غير كده",
 			"أنا لازم أدخل المعبد وأكتشف اللي حصل جواه",
 			" أكيد هلاقي أجوبة هناك"
 		};
@@ -107,7 +102,7 @@ public class UIManager : Singleton<UIManager>
 		
 		if (_currDialogue < _dialogue.Count)
 		{
-			dialogueBox.text = _dialogue[_currDialogue];
+			dialogueBox.text = ArabicSupport.Fix( _dialogue[_currDialogue]);
 			_currDialogue++;
 		}
 		else
@@ -116,17 +111,6 @@ public class UIManager : Singleton<UIManager>
 		}
 		
 	}
-	
-	private void OnGamePaused()
-	{
-		pauseMenuPanel.SetActive(true);
-	}
-
-	private void OnGameResumed()
-	{
-		pauseMenuPanel.SetActive(false);
-	}
-
 
 	private void OnLevelReset()
 	{
@@ -165,11 +149,6 @@ public class UIManager : Singleton<UIManager>
 		milliseconds = finishingTime % 1;
 		var millisecondsString = milliseconds.ToString("f3");
 		finishingTimeText.text = minutes + " min, " + seconds + " seconds & " + millisecondsString.Trim('.', '0') + " ms";
-	}
-
-	public void ResumeGame()
-	{
-		GameManager.Instance.ResumeGame();
 	}
 
 	public void RestartLevel()

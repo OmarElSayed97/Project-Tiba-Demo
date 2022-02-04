@@ -108,6 +108,7 @@ namespace Controllers.Player.Abilities
             abilityCollider.enabled = false;
             CancelAbility();
             impulseSource.GenerateImpulse();
+            AudioManager.Instance.Play("Destruct");
             destroyedGFX.SetActive(true);
             selectionEffect.SetActive(false);
             vfx.SetActive(false);
