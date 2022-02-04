@@ -1,0 +1,1490 @@
+fileFormatVersion: 2
+guid: 582de3807664205439fdc84e5cdad64d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 2
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CloudSpritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6160
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bd7937b16a13724c89b622ff394110d
+      internalID: 449387495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 6160
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5531645c4fe64e4469d7716b32fcfc7a
+      internalID: 332525608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 6160
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97c64e6124e28974ebafcfa2092109aa
+      internalID: -195757615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 6160
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a690bb0af4e18784fb5706772d97a978
+      internalID: 1050639916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5720
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 087dfc8b73aea8244a8bc9695114dd70
+      internalID: -1174698186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 5720
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d40de496b63cdd547a581913c14b93bb
+      internalID: 1809996549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 5720
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6707c84e4ba0c04f951cbb04bfa052e
+      internalID: 1487690355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 5720
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f74c5583247744438c5bd976aa67a93
+      internalID: 1968647219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5280
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71db7bd5f7e8431408cdbd4024a08c8a
+      internalID: -347171530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 5271
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50503c0e02a7e2419fd5d5c2c90355e
+      internalID: -1325511728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 5280
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3ea8ed7c991d724f80735b6550a87ba
+      internalID: 1255014032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 5280
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 489837641aec267409170d73e2ef695e
+      internalID: -803236445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4840
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e2d3994ab2e1444ad89e138279abe7
+      internalID: 1159744365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 4840
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89695e7aee03cba4cb8efd5042b90ff0
+      internalID: -795581602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 4840
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b9d7d48a57c6942afcd3167a950010
+      internalID: -1985661024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 4840
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748916f4d269df24b883f6ff211c0e4e
+      internalID: 480366627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4400
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5759479e9cf01624d95ee67f7364629b
+      internalID: -1906558282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 4400
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00247cddad8da2344ba38d93dfd37de6
+      internalID: -986783085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 4400
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 187809091458f3f47972e5cf07d32f2b
+      internalID: -1720298177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 4400
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab214f0eadbfa0642b248cab258209c6
+      internalID: 1562683552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3960
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 761b90b179a57ae46a965f547f87a6a1
+      internalID: -1484876507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 3960
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0872f4f4a49f8f44bf001dbb5b4265a
+      internalID: 1623028888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 3960
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b1b12303134a34d977df10b05ea998
+      internalID: -1640390405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 3960
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f9d1abc6663c3d43ac0df3191e3069f
+      internalID: -713786116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3520
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e35aa34c80c37143925deeadc10aa41
+      internalID: 1419335605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 3520
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7cf0d5d10ebd0145afcffa8f8562269
+      internalID: 1420941267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 3520
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976c9d38678f6c14aa256ed33819e2e8
+      internalID: -1696956166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 3520
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74ba1f6aad699c94bbd5770a54602bdc
+      internalID: 954809915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3080
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7a19828981f42c4baaa52c0c6985dc6
+      internalID: -1147630595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 3080
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04a6cf21e00ef1459ddd193e04b6077
+      internalID: 101066088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 3080
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 485bf2d8abe358a42b3636a383cdfeeb
+      internalID: -1107933940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 3080
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ec9922aef6bb62469967eccea2676d5
+      internalID: -1136583426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2640
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a39429085d780648b0219b489f9f974
+      internalID: -1534130238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 2640
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f7caec39d5d8cb42ab29843b75f0bc2
+      internalID: 550543786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 2640
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88770c1bde077644bb0fba902a84d82e
+      internalID: 1134499216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 2640
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94183c829f57e484d931bfc1bede18b7
+      internalID: -1514385754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2200
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312b232ba2a41794ab510f24cb35fbaf
+      internalID: 1960490139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 2200
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15249cbf98e5ced46bbb4d56a4abec2f
+      internalID: -409580224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 2209
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb7c22c9a5e94d34993c59effae7710f
+      internalID: -2032086157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 2200
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3232b6667204f4e45ad70206b0b80a55
+      internalID: 784986122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1760
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49f1a4f4f093bc043a3d20dfdcdb4f58
+      internalID: 1971516145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 1760
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e419aeb0c6b9c40936c45d78ed0171
+      internalID: 1573419151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 1760
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57d1f139cd785b3448e975da9d8b7bd8
+      internalID: -1171830736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 1760
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e579cffbae05e234e9e8a2fc65a22b48
+      internalID: 1215191916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1320
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 583314a9989344942ad7a33096fac882
+      internalID: 1578649195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 1320
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8829027e6d987454db7f0f0b25360823
+      internalID: -868287219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 1320
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b40fd9526e47e409123210a7f27d97
+      internalID: -952833026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 1320
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b07668cbf146ee24f8d66cba9764718f
+      internalID: 1842362922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 880
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 941219d1527852e4ab39bd25355d4525
+      internalID: -540979407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 880
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6253efa4dd29f794db42d55893e06dd0
+      internalID: -689235557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 880
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 648f71b3c9c54404c98261c0cfa4839c
+      internalID: 1342766850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 880
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f778a86102c693945a43c2a356549a14
+      internalID: -244203249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 440
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfa52167349b8cd4989bb2d76aa5e56a
+      internalID: -537768409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 440
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d7ab5fd5ad8f24ba33536bcab348a5
+      internalID: -1662035472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 440
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e579efc559cdca4eb663f17f721cbc9
+      internalID: -1873353048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 440
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ec063a6989e9a94488fbc83f47fd73f
+      internalID: 2069229255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02cce072e1bcb254cac280096d443d8c
+      internalID: -263290028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 3028
+        y: 0
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 302916c5a76a1a741b1528620bc2ba37
+      internalID: -1293892648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 6056
+        y: 0
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71453504e015bc044a6764390b2c7c06
+      internalID: -1678444367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloudSpritesheet_59
+      rect:
+        serializedVersion: 2
+        x: 9084
+        y: 0
+        width: 3028
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 33, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddca66daca8068e47a69b93cdfa8a849
+      internalID: -523342525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 83996a77c7b859f449405a19d76b5588
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      CloudSpritesheet_10: 1255014032
+      CloudSpritesheet_16: -1906558282
+      CloudSpritesheet_9: -1325511728
+      CloudSpritesheet_40: 1971516145
+      CloudSpritesheet_7: 1968647219
+      CloudSpritesheet_35: -1514385754
+      CloudSpritesheet_0: 449387495
+      CloudSpritesheet_41: 1573419151
+      CloudSpritesheet_43: 1215191916
+      CloudSpritesheet_14: -1985661024
+      CloudSpritesheet_36: 1960490139
+      CloudSpritesheet_37: -409580224
+      CloudSpritesheet_57: -1293892648
+      CloudSpritesheet_58: -1678444367
+      CloudSpritesheet_34: 1134499216
+      CloudSpritesheet_27: 954809915
+      CloudSpritesheet_50: 1342766850
+      CloudSpritesheet_33: 550543786
+      CloudSpritesheet_29: 101066088
+      CloudSpritesheet_15: 480366627
+      CloudSpritesheet_6: 1487690355
+      CloudSpritesheet_42: -1171830736
+      CloudSpritesheet_18: -1720298177
+      CloudSpritesheet_51: -244203249
+      CloudSpritesheet_22: -1640390405
+      CloudSpritesheet_2: -195757615
+      CloudSpritesheet_31: -1136583426
+      CloudSpritesheet_13: -795581602
+      CloudSpritesheet_38: -2032086157
+      CloudSpritesheet_30: -1107933940
+      CloudSpritesheet_5: 1809996549
+      CloudSpritesheet_49: -689235557
+      CloudSpritesheet_47: 1842362922
+      CloudSpritesheet_24: 1419335605
+      CloudSpritesheet_52: -537768409
+      CloudSpritesheet_19: 1562683552
+      CloudSpritesheet_17: -986783085
+      CloudSpritesheet_26: -1696956166
+      CloudSpritesheet_55: 2069229255
+      CloudSpritesheet_53: -1662035472
+      CloudSpritesheet_4: -1174698186
+      CloudSpritesheet_45: -868287219
+      CloudSpritesheet_54: -1873353048
+      CloudSpritesheet_56: -263290028
+      CloudSpritesheet_32: -1534130238
+      CloudSpritesheet_48: -540979407
+      CloudSpritesheet_12: 1159744365
+      CloudSpritesheet_8: -347171530
+      CloudSpritesheet_59: -523342525
+      CloudSpritesheet_44: 1578649195
+      CloudSpritesheet_20: -1484876507
+      CloudSpritesheet_1: 332525608
+      CloudSpritesheet_11: -803236445
+      CloudSpritesheet_46: -952833026
+      CloudSpritesheet_23: -713786116
+      CloudSpritesheet_39: 784986122
+      CloudSpritesheet_28: -1147630595
+      CloudSpritesheet_3: 1050639916
+      CloudSpritesheet_25: 1420941267
+      CloudSpritesheet_21: 1623028888
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
