@@ -22,12 +22,12 @@ namespace Controllers.Player
         public bool walk;
         public bool jump;
         public bool performAbility;
-        public bool gameStarted { get;  set; }
+        public bool GameStarted { get;  set; }
         public Vector2 Move { get; private set; }
         public Vector2 Look { get; private set; }
 
-        public event Action<int> OnAbilitySwitched; 
-        public event Action OnNextDialogue; //Added By Omar
+        public static event Action<int> OnAbilitySwitched; 
+        public static event Action OnNextDialogue; //Added By Omar
         
 
         [HideInInspector]
@@ -79,19 +79,19 @@ namespace Controllers.Player
         
         private void WalkActionOnStarted(InputAction.CallbackContext obj)
         {
-            if(gameStarted)
+            if(GameStarted)
                 walk = true;
         }
         
         private void WalkActionOnCanceled(InputAction.CallbackContext obj)
         {
-            if (gameStarted)
+            if (GameStarted)
                 walk = false;
         }
         
         private void JumpActionOnStarted(InputAction.CallbackContext obj)
         {
-            if (gameStarted)
+            if (GameStarted)
                 jump = true;
             else
                 OnNextDialogue?.Invoke();
@@ -99,52 +99,52 @@ namespace Controllers.Player
         
         private void JumpActionOnCanceled(InputAction.CallbackContext obj)
         {
-            if (gameStarted)
+            if (GameStarted)
                 jump = false;
         }
         private void AbilityActionOnStarted(InputAction.CallbackContext obj)
         {
-            if (gameStarted)
+            if (GameStarted)
                 performAbility = true;
         }
         private void AbilityActionOnCanceled(InputAction.CallbackContext obj)
         {
-            if (gameStarted)
+            if (GameStarted)
                 performAbility = false;
         }
         private void AbilityOneActionOnPerformed(InputAction.CallbackContext obj)
         {
-            if (gameStarted)
+            if (GameStarted)
                 OnAbilitySwitched?.Invoke(0);
         }
         private void AbilityTwoActionOnPerformed(InputAction.CallbackContext obj)
         {
-            if (gameStarted)
+            if (GameStarted)
                 OnAbilitySwitched?.Invoke(1);
         }
 
 
         private void SwitchAbilityOnPerformed(InputAction.CallbackContext obj)
         {
-           if(currSelectedAbility == 0)
+            if(currSelectedAbility == 0)
             {
                 OnAbilitySwitched?.Invoke(1);
                 currSelectedAbility = 1;
-                UIManager._instance.SwitchAbility(1);
+                // UIManager._instance.SwitchAbility(1);
             }
                
-           else
+            else
             {
                 OnAbilitySwitched?.Invoke(0);
                 currSelectedAbility = 0;
-                UIManager._instance.SwitchAbility(0);
+                // UIManager._instance.SwitchAbility(0);
             }
                 
         }
 
         private void Update()
         {
-            if (gameStarted)
+            if (GameStarted)
             {
                 Move = _moveAction.ReadValue<Vector2>();
                 Look = _lookAction.ReadValue<Vector2>();
