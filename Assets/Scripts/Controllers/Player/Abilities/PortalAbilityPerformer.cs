@@ -58,7 +58,7 @@ namespace Controllers.Player.Abilities
             openedEffect.SetActive(true);
             base.AbilityStartedLogic();
             StartTimer();
-            AudioManager._instance.Play("Portal");
+            AudioManager.Instance.Play("Portal");
         }
 
         protected override void AbilityCancelLogic()
@@ -157,7 +157,7 @@ namespace Controllers.Player.Abilities
             {
                 teleportObj.position = transform.position;    
             }
-            AudioManager._instance.Play("Teleport");
+            AudioManager.Instance.Play("Teleport");
 
 
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 
 public class GameOver : MonoBehaviour
@@ -9,7 +10,7 @@ public class GameOver : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UIManager._instance.GameOver();
+            GameManager.Instance.FailLevel();
         }
     }
 }

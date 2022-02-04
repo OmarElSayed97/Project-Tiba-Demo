@@ -1,27 +1,26 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Classes;
+using Controllers.Player;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    public static AudioManager _instance;
-    public Sound[] sounds;
-    void Awake()
+	[SerializeField] private Sound[] _sounds;
+    protected override void OnAwakeEvent()
     {
-        _instance = this;
-        foreach(Sound s in sounds)
-        {
-           s.source =  gameObject.AddComponent<AudioSource>();
-           s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-        }
+	    base.OnAwakeEvent();
+	    foreach(var s in _sounds)
+	    {
+		    s.source =  gameObject.AddComponent<AudioSource>();
+		    s.source.clip = s.clip;
+		    s.source.volume = s.volume;
+		    s.source.pitch = s.pitch;
+	    }
     }
 
-   public void Play(string name)
+    public void Play(string clipName)
     {
-       Sound s =  Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+	    var s =  Array.Find(_sounds, sound => sound.name == clipName);
+	    s.source.Play();
     }
 }

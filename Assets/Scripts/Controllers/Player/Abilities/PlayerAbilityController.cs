@@ -54,13 +54,13 @@ namespace Controllers.Player.Abilities
 
 		private void OnEnable()
 		{
-			AbilityManager.Instance.OnAbilitySwitched += OnAbilitySwitchedHandler;
+			AbilityManager.OnAbilitySwitched += OnAbilitySwitchedHandler;
 		}
 
 		private void OnDisable()
 		{
 			if(!AbilityManager.IsInstanceNull)
-				AbilityManager.Instance.OnAbilitySwitched -= OnAbilitySwitchedHandler;
+				AbilityManager.OnAbilitySwitched -= OnAbilitySwitchedHandler;
 		}
 		
 		private void Update()
@@ -103,7 +103,7 @@ namespace Controllers.Player.Abilities
 						currentAbilityPerformerBase = (AbilityPerformerBase)_abilityPerformerComponent;
 						currentAbility = currentAbilityPerformerBase.Ability;
 						currentAbilityPerformerBase.SelectAbility(OnAbilitySelected);
-						AudioManager._instance.Play("Highlight");
+						AudioManager.Instance.Play("Highlight");
 					}
 					
 				}
@@ -144,7 +144,7 @@ namespace Controllers.Player.Abilities
 				case true when isPerformingAbility && isAbilityStarted:
 				{
 					currentAbilityPoints -= currentAbility.Cost * Time.deltaTime;
-					UIManager._instance.energySource.fillAmount = currentAbilityPoints / maxAbilityPoints;
+					UIManager.Instance.energySource.fillAmount = currentAbilityPoints / maxAbilityPoints;
 
 					if (currentAbilityPoints <= 0)
 					{
@@ -178,7 +178,7 @@ namespace Controllers.Player.Abilities
 			{
 				currentAbilityPoints -= currentAbility.Cost;
 				isPerformingAbility = false;
-				UIManager._instance.energySource.fillAmount = currentAbilityPoints / maxAbilityPoints;
+				UIManager.Instance.energySource.fillAmount = currentAbilityPoints / maxAbilityPoints;
 			}
 			else
 			{

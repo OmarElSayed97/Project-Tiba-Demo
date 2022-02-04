@@ -2,6 +2,7 @@ using System;
 using Cinemachine.Utility;
 using Controllers.Player;
 using DG.Tweening;
+using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -138,7 +139,7 @@ namespace Controllers.Enemy
             }
             else
             {
-                UIManager._instance.GameOver();
+                GameManager.Instance.FailLevel();
             }
             
         }

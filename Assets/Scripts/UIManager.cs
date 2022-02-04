@@ -1,153 +1,158 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Controllers.Player;
-using System;
-using UnityEngine.SceneManagement;
 using TMPro;
-using Enums;
-public class UIManager : MonoBehaviour
+using Managers;
+
+public class UIManager : Singleton<UIManager>
 {
-    [SerializeField]
-    Sprite[] portalAbilitySprites, gravityAbilitySprites;
-    [SerializeField]
-    Image portalIcon, gravityIcon;
-    [SerializeField]
-    public Image energySource;
-    string d1, d2, d3,d4;
-    [SerializeField]
-    TextMeshProUGUI dialogueBox;
-    int currDialogue;
-    public static UIManager _instance;
-    [HideInInspector]
-    [SerializeField]
-    GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel,TutorialPanel;
-    float finishingTime,minutes,seconds,milliseconds;
-    bool startCounting;
-    [SerializeField]
-    TextMeshProUGUI finishingTimeText;
-    private void Awake()
-    {
-        _instance = this;
-        AssignText();
-        dialogueBox.text = d1;
-    }
+	[SerializeField] Sprite[] portalAbilitySprites, gravityAbilitySprites;
+	[SerializeField] Image portalIcon, gravityIcon;
+	[SerializeField] public Image energySource;
+	[SerializeField] TextMeshProUGUI dialogueBox;
+	
+	private List<string> _dialogue;
+	private int _currDialogue;
+	
+	[HideInInspector] [SerializeField] GameObject DialoguePanel, HUDPanel, GameOverPanel, EndGamePanel, TutorialPanel;
+	float finishingTime, minutes, seconds, milliseconds;
 
-    private void OnEnable()
-    {
-        InputController.Instance.OnNextDialogue += GetNextDialogue;
-    }
+	[SerializeField] TextMeshProUGUI finishingTimeText;
 
-    //private void OnDisable()
-    //{
-    //    if(UIManager._instance!=null)
-    //        InputController.Instance.OnNextDialogue -= GetNextDialogue;
-    //}
+	protected override void OnAwakeEvent()
+	{
+		AssignText();
+		dialogueBox.text = _dialogue[0];
+		DialoguePanel.SetActive(false);
+		TutorialPanel.SetActive(false);
+		EndGamePanel.SetActive(false);
+		HUDPanel.SetActive(false);
+	}
 
+	private void OnEnable()
+	{
+		InputController.OnNextDialogue += GetNextDialogue;
+		InputController.OnAbilitySwitched += SwitchAbility;
+		GameManager.LevelLoaded += OnLevelLoaded;
+		GameManager.LevelFailed += OnLevelFailed;
+		GameManager.LevelStarted += OnLevelStarted;
+		GameManager.LevelCompleted += OnLevelCompleted;
+	}
+	
+	public override void OnDisable()
+	{
+		base.OnDisable();
+		if (!InputController.IsInstanceNull)
+		{
+			InputController.OnNextDialogue -= GetNextDialogue;
+			InputController.OnAbilitySwitched -= SwitchAbility;
+		}
 
-    
-    public void SwitchAbility(int abilityNumber)
-    {
-        if(abilityNumber == 1)
-        {
-            portalIcon.sprite = portalAbilitySprites[1];
-            gravityIcon.sprite = gravityAbilitySprites[0];
-        }
-        else if(abilityNumber == 0)
-        {
-            portalIcon.sprite = portalAbilitySprites[0];
-            gravityIcon.sprite = gravityAbilitySprites[1];
-        }
-
-        AudioManager._instance.Play("Select");
-    }
-
-    void AssignText()
-    {
-         d1 = ArabicFixerTool.FixLine("الناس كلها في سوق المدينة  كانت مقتنعة إن ده يوم القيامة ");
-         d2 = ArabicFixerTool.FixLine("بس البنت اللي قابلتها كان كلامها غير كده ");
-         d3 = ArabicFixerTool.FixLine("أنا لازم أدخل المعبد وأكتشف اللي حصل جواه");
-        d4 = ArabicFixerTool.FixLine(" أكيد هلاقي أجوبة هناك");
-    }
-
-    private void Update()
-    {
-        if (startCounting)
-        {
-            finishingTime += Time.deltaTime;
-           
-        }
-            
-
-    }
-    private void GetNextDialogue()
-    {
-        if (currDialogue == 0)
-        {
-            TutorialPanel.SetActive(false);
-            currDialogue++;
-        }
-        else if(currDialogue == 1)
-        {
-            dialogueBox.text = d2;
-            currDialogue++;
-        }
-        else if (currDialogue == 2)
-        {
-            dialogueBox.text = d3;
-            currDialogue++;
-        }
-        else if (currDialogue == 3)
-        {
-            dialogueBox.text = d4;
-            currDialogue++;
-        }
-        else if (currDialogue == 4)
-        {
-            InputController.Instance.gameStarted = true;
-            startCounting = true;
-            DialoguePanel.SetActive(false);
-            HUDPanel.SetActive(true);
-
-        }
-
-    }
+		if (!GameManager.IsInstanceNull)
+		{
+			GameManager.LevelLoaded -= OnLevelLoaded;
+			GameManager.LevelStarted -= OnLevelStarted;
+			GameManager.LevelFailed -= OnLevelFailed;
+			GameManager.LevelCompleted -= OnLevelCompleted;
+		}
+	}
 
 
+	private void SwitchAbility(int abilityNumber)
+	{
+		//TODO Listen to the AbilityManager Event Instead
+		switch (abilityNumber)
+		{
+			case 1:
+				portalIcon.sprite = portalAbilitySprites[1];
+				gravityIcon.sprite = gravityAbilitySprites[0];
+				break;
+			case 0:
+				portalIcon.sprite = portalAbilitySprites[0];
+				gravityIcon.sprite = gravityAbilitySprites[1];
+				break;
+		}
+	}
 
-    public void GameOver()
-    {
-        if (GameOverPanel.activeSelf)
-            return;
-        Cursor.visible = true;
-        Time.timeScale = 0;
-        GameOverPanel.SetActive(true);
-    }
+	private void AssignText()
+	{
+		// d1 = ArabicFixerTool.FixLine("الناس كلها في سوق المدينة  كانت مقتنعة إن ده يوم القيامة ");
+		// d2 = ArabicFixerTool.FixLine("بس البنت اللي قابلتها كان كلامها غير كده ");
+		// d3 = ArabicFixerTool.FixLine("أنا لازم أدخل المعبد وأكتشف اللي حصل جواه");
+		// d4 = ArabicFixerTool.FixLine(" أكيد هلاقي أجوبة هناك");
+		_dialogue = new List<string>
+		{
+			"الناس كلها في سوق المدينة كانت مقتنعةإن ده يوم القيامة",
+			"بس البنت اللي قابلتها كان كلامهاغير كده",
+			"أنا لازم أدخل المعبد وأكتشف اللي حصل جواه",
+			" أكيد هلاقي أجوبة هناك"
+		};
+	}
 
-    public void EndGame()
-    {
-        Cursor.visible = true;
-        EndGamePanel.SetActive(true);
-       
-        minutes = Mathf.FloorToInt(finishingTime / 60);
-        seconds = Mathf.FloorToInt(finishingTime % 60);
-        milliseconds = finishingTime % 1;
-        string millisecondsString = milliseconds.ToString("f3");
-        finishingTimeText.text = minutes + " min, " + seconds + " seconds & " + millisecondsString.Trim('.','0') + " ms";
-        Time.timeScale = 0;
-    }
+	private void GetNextDialogue()
+	{
+		if (!GameManager.Instance.Tutorial)
+		{
+			GameManager.Instance.LoadLevel();
+			return;
+		}
+		
+		TutorialPanel.SetActive(false);
+		DialoguePanel.SetActive(true);
+		
+		if (_currDialogue < _dialogue.Count)
+		{
+			dialogueBox.text = _dialogue[_currDialogue];
+			_currDialogue++;
+		}
+		else
+		{
+			GameManager.Instance.StartLevel();
+		}
+		
+	}
+	
+	private void OnLevelLoaded()
+	{ 
+		TutorialPanel.gameObject.SetActive(GameManager.Instance.Tutorial);
+		DialoguePanel.gameObject.SetActive(GameManager.Instance.Tutorial);
+		_currDialogue = 0;
+	}
+	
+	private void OnLevelStarted()
+	{
+		DialoguePanel.SetActive(false);
+		HUDPanel.SetActive(true);
+	}
 
+	private void OnLevelFailed()
+	{
+		Cursor.visible = true;
+		GameOverPanel.SetActive(true);
+	}
 
-    public void RestartLevel()
-    {
-        Cursor.visible = false;
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+	private void OnLevelCompleted()
+	{
+		Cursor.visible = true;
+		EndGamePanel.SetActive(true);
+		finishingTime = (float)(GameManager.Instance.LevelEndTime - GameManager.Instance.LevelStartTime);
+		minutes = Mathf.FloorToInt(finishingTime / 60);
+		seconds = Mathf.FloorToInt(finishingTime % 60);
+		milliseconds = finishingTime % 1;
+		var millisecondsString = milliseconds.ToString("f3");
+		finishingTimeText.text = minutes + " min, " + seconds + " seconds & " + millisecondsString.Trim('.', '0') + " ms";
+	}
 
-    public void Quit()
-    {
-        Application.Quit();
-    }
+	public void RestartLevel()
+	{
+	    Cursor.visible = false;
+	    GameManager.Instance.ResetLevel();
+	}
+
+	public void Quit()
+	{
+		//TODO Remove this from here
+		Application.Quit();
+	}
 }

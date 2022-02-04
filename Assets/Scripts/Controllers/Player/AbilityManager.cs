@@ -11,13 +11,13 @@ namespace Controllers.Player
 
         [SerializeField] private Ability selectedAbility;
         private int _currentSwitchedAbilityIndex = -1;
-        public event Action<Ability> OnAbilitySwitched;
+        public static event Action<Ability> OnAbilitySwitched;
         public AbilitiesConfig AbilityConfig => abilitiesConfig;
         public Ability SelectedAbility => selectedAbility;
         
         private void OnEnable()
         {
-            InputController.Instance.OnAbilitySwitched += AbilitySwitchedHandler;
+            InputController.OnAbilitySwitched += AbilitySwitchedHandler;
            
         }
 
@@ -25,7 +25,7 @@ namespace Controllers.Player
         {
             base.OnDisable();
             if(!InputController.IsInstanceNull)
-                InputController.Instance.OnAbilitySwitched -= AbilitySwitchedHandler;
+                InputController.OnAbilitySwitched -= AbilitySwitchedHandler;
         }
         
         private void AbilitySwitchedHandler(int abilityIndex)
@@ -40,7 +40,7 @@ namespace Controllers.Player
                 _ => selectedAbility
             };
             _currentSwitchedAbilityIndex = abilityIndex;
-            Debug.Log($"Ability Invoked {abilityIndex} {selectedAbility}");
+            // Debug.Log($"Ability Invoked {abilityIndex} {selectedAbility}");
             OnAbilitySwitched?.Invoke(selectedAbility);   
         }
 
