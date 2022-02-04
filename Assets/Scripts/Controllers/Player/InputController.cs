@@ -1,4 +1,6 @@
 using System;
+using Classes.Enums;
+using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +20,7 @@ namespace Controllers.Player
         private InputAction _abilityOneAction;
         private InputAction _abilityTwoAction;
         private InputAction _switchAbilityAction;
+        private InputAction _pauseAction;
 
         public bool walk;
         public bool jump;
@@ -45,6 +48,7 @@ namespace Controllers.Player
             _abilityOneAction = _playerInput.actions["Ability_One"];
             _abilityTwoAction = _playerInput.actions["Ability_Two"];
             _switchAbilityAction = _playerInput.actions["SwitchAbility"];
+            _pauseAction = _playerInput.actions["Pause"];
             currSelectedAbility = 0;
         }
 
@@ -59,10 +63,11 @@ namespace Controllers.Player
             _abilityOneAction.performed += AbilityOneActionOnPerformed;
             _abilityTwoAction.performed += AbilityTwoActionOnPerformed;
             _switchAbilityAction.performed += SwitchAbilityOnPerformed;
+            _pauseAction.performed += PauseActionPerformed;
+            GameManager.GamePaused += OnLevelPaused;
+            GameManager.GameResumed += OnLevelResumed;
         }
-
-       
-
+        
         public override void OnDisable()
         {
             base.OnDisable();
@@ -75,8 +80,34 @@ namespace Controllers.Player
             _abilityOneAction.performed -= AbilityOneActionOnPerformed;
             _abilityTwoAction.performed -= AbilityTwoActionOnPerformed;
             _switchAbilityAction.performed -= SwitchAbilityOnPerformed;
+            _pauseAction.performed -= PauseActionPerformed;
+            GameManager.GamePaused -= OnLevelPaused;
+            GameManager.GameResumed -= OnLevelResumed;
+        }
+
+        private void PauseActionPerformed(InputAction.CallbackContext obj)
+        {
+            switch (GameManager.Instance.GameState)
+            {
+                case eGameState.Playing:
+                    GameManager.Instance.PauseGame();
+                    break;
+                case eGameState.Paused:
+                    GameManager.Instance.ResumeGame();
+                    break;
+            }
         }
         
+        private void OnLevelResumed()
+        {
+            _playerInput.SwitchCurrentActionMap("Player");
+        }
+
+        private void OnLevelPaused()
+        {
+            _playerInput.SwitchCurrentActionMap("UI");
+        }
+
         private void WalkActionOnStarted(InputAction.CallbackContext obj)
         {
             if(GameStarted)
@@ -122,8 +153,7 @@ namespace Controllers.Player
             if (GameStarted)
                 OnAbilitySwitched?.Invoke(1);
         }
-
-
+        
         private void SwitchAbilityOnPerformed(InputAction.CallbackContext obj)
         {
             if(currSelectedAbility == 0)
