@@ -1405,7 +1405,6 @@ GameObject:
   - component: {fileID: 1295962754}
   - component: {fileID: 1295962753}
   - component: {fileID: 1295962752}
-  - component: {fileID: 1295962755}
   m_Layer: 5
   m_Name: FinishTimeText
   m_TagString: Untagged
@@ -1530,21 +1529,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1295962755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1295962751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fixedText: 
-  ShowTashkeel: 0
-  UseHinduNumbers: 1
 --- !u!1 &1456928639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,7 +2733,6 @@ GameObject:
   - component: {fileID: 6764993725855472648}
   - component: {fileID: 1265154325251997355}
   - component: {fileID: 1529628200}
-  - component: {fileID: 1529628201}
   m_Layer: 5
   m_Name: DialogueText
   m_TagString: Untagged
@@ -2874,21 +2857,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1529628201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6893319369037358922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fixedText: 
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!1 &7122344964304003970
 GameObject:
   m_ObjectHideFlags: 0
